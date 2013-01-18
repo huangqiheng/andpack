@@ -1,0 +1,299 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOW_ENV_CONFIG	config.h	16;"	d
+ALLOW_MSG_OUTPUT	config.h	12;"	d
+CC	Makefile	/^CC = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -I$(src_prefix)\/include -I..\/system -Os$/;"	m
+CLOSE_SIGNATURE	config.h	49;"	d
+CONF_FILE	config.h	66;"	d
+CONNECTED	tsocks.h	83;"	d
+CONNECTING	tsocks.h	82;"	d
+CONNECT_SIGNATURE	config.h	36;"	d
+CONNECT_SOCKARG	config.h	40;"	d
+DEFAULT_CONF_URL	SocksHook.c	1914;"	d	file:
+DLFCN_H	dlfcn.h	21;"	d
+DONE	tsocks.h	94;"	d
+DONEFINISH	tsocks.h	96;"	d
+DllMain	SocksHook.c	/^BOOL WINAPI DllMain (HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpReserved)$/;"	f
+EXCEPT	tsocks.h	102;"	d
+EXECS	Makefile	/^EXECS = sockshook.dll$/;"	m
+FAILFINISH	tsocks.h	97;"	d
+FAILURED	tsocks.h	95;"	d
+GOTV4REQ	tsocks.h	87;"	d
+GOTV5AUTH	tsocks.h	91;"	d
+GOTV5CONNECT	tsocks.h	93;"	d
+GOTV5METHOD	tsocks.h	89;"	d
+HAVE_GETHOSTBYNAME	config.h	63;"	d
+HAVE_INET_ATON	config.h	54;"	d
+HAVE_LIBDL	config.h	87;"	d
+HAVE_STRCSPN	config.h	69;"	d
+HAVE_STRDUP	config.h	72;"	d
+HAVE_STRERROR	config.h	75;"	d
+HAVE_STRSPN	config.h	78;"	d
+HAVE_STRTOL	config.h	81;"	d
+HAVE_UNISTD_H	config.h	84;"	d
+HOSTNAMES	config.h	59;"	d
+HookKernel	SocksHook.c	/^void* HookKernel(char *name, HMODULE *hHook, void *fHooker) $/;"	f
+HookWinsock	SocksHook.c	/^void* HookWinsock(char *name, HMODULE *hHook, void *fHooker) $/;"	f
+Hook_InlineHookGetOri	SocksHook.c	/^LPFN_Hook_InlineHookGetOri Hook_InlineHookGetOri;$/;"	v
+Hook_InlineHookInstall	SocksHook.c	/^LPFN_Hook_InlineHookInstall Hook_InlineHookInstall;$/;"	v
+Hook_InlineHookRemove	SocksHook.c	/^LPFN_Hook_InlineHookRemove Hook_InlineHookRemove;$/;"	v
+LD	Makefile	/^LD = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = -L$(src_prefix)\/lib -s$/;"	m
+LIBOUT	Makefile	/^LIBOUT = ..\/bin\/plugin$/;"	m
+LIBS	Makefile	/^LIBS = -shared -lws2_32$/;"	m
+LPFN_Hook_InlineHookGetOri	SocksHook.c	/^typedef void*   (*LPFN_Hook_InlineHookGetOri)(HMODULE hHooker);$/;"	t	file:
+LPFN_Hook_InlineHookInstall	SocksHook.c	/^typedef HMODULE (*LPFN_Hook_InlineHookInstall)(void* fnHookFrom, void* fnHookTo);$/;"	t	file:
+LPFN_Hook_InlineHookRemove	SocksHook.c	/^typedef void    (*LPFN_Hook_InlineHookRemove)(HMODULE hHooker);$/;"	t	file:
+LPFN_WAITFORMULTIPLEOBJECTSEX	SocksHook.c	/^typedef DWORD (WINAPI *LPFN_WAITFORMULTIPLEOBJECTSEX) (DWORD,const HANDLE*,BOOL,DWORD,BOOL);$/;"	t	file:
+MAKE	Makefile	/^MAKE = make --no-print-directory$/;"	m
+MAXLINE	parser.c	20;"	d	file:
+MAX_OBJECTS	dlfcn.c	33;"	d	file:
+POLL_SIGNATURE	config.h	46;"	d
+READ	tsocks.h	100;"	d
+READWRITE	tsocks.h	103;"	d
+READWRITEEXCEPT	tsocks.h	104;"	d
+RECEIVING	tsocks.h	85;"	d
+RTLD_DEFAULT	dlfcn.h	37;"	d
+RTLD_GLOBAL	dlfcn.h	30;"	d
+RTLD_LAZY	dlfcn.h	27;"	d
+RTLD_LOCAL	dlfcn.h	31;"	d
+RTLD_NEXT	dlfcn.h	38;"	d
+RTLD_NOW	dlfcn.h	28;"	d
+SELECT_SIGNATURE	config.h	43;"	d
+SENDING	tsocks.h	84;"	d
+SENTV4REQ	tsocks.h	86;"	d
+SENTV5AUTH	tsocks.h	90;"	d
+SENTV5CONNECT	tsocks.h	92;"	d
+SENTV5METHOD	tsocks.h	88;"	d
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+STDC_HEADERS	config.h	6;"	d
+UNSTARTED	tsocks.h	81;"	d
+USE_GNU_SOURCE	config.h	19;"	d
+WIN32_COMPATIBILITY_H	win32_compatibility.h	20;"	d
+WRITE	tsocks.h	101;"	d
+_GNU_SOURCE	SocksHook.c	5;"	d	file:
+_PARSER_H	parser.h	5;"	d
+_TSOCKS_H	tsocks.h	5;"	d
+address	parser.h	/^	char *address; \/* Address\/hostname of server *\/$/;"	m	struct:serverent
+bin_prefix	Makefile	/^bin_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/bin$/;"	m
+buffer	tsocks.h	/^	char buffer[1024];$/;"	m	struct:connreq
+bzero	win32_compatibility.c	/^void bzero(void* s, size_t n)$/;"	f
+cancel	SocksHook.c	/^	wchar_t* cancel;$/;"	m	struct:__anon1	file:
+caption	SocksHook.c	/^	wchar_t* caption;$/;"	m	struct:__anon1	file:
+check_server	parser.c	/^static int check_server(struct serverent *server) {$/;"	f	file:
+cmd2str	SocksHook.c	/^char* cmd2str(long cmd) {$/;"	f
+command	tsocks.h	/^	int8_t command;$/;"	m	struct:sockreq
+conffile	SocksHook.c	/^static char *conffile = NULL;$/;"	v	file:
+config	SocksHook.c	/^static struct parsedfile *config;$/;"	v	typeref:struct:parsedfile	file:
+conn_list_count	SocksHook.c	/^static int conn_list_count(int includefinished) {$/;"	f	file:
+connaddr	tsocks.h	/^	struct sockaddr_in connaddr;$/;"	m	struct:connreq	typeref:struct:connreq::sockaddr_in
+connect_server	SocksHook.c	/^static int connect_server(struct connreq *conn) {$/;"	f	file:
+connreq	tsocks.h	/^struct connreq {$/;"	s
+copy_string	dlfcn.c	/^static int copy_string( char *dest, int dest_size, const char *src )$/;"	f	file:
+currentcontext	parser.c	/^static struct serverent *currentcontext = NULL;$/;"	v	typeref:struct:serverent	file:
+datadone	tsocks.h	/^	int datadone;$/;"	m	struct:connreq
+datalen	tsocks.h	/^	int datalen;$/;"	m	struct:connreq
+defaultport	SocksHook.c	/^int defaultport	= 1080;			   \/* Default SOCKS port       *\/$/;"	v
+defaultserver	parser.h	/^   struct serverent defaultserver;$/;"	m	struct:parsedfile	typeref:struct:parsedfile::serverent
+defpass	parser.h	/^	char *defpass; \/* Default password for this socks server *\/$/;"	m	struct:serverent
+defuser	parser.h	/^	char *defuser; \/* Default username for this socks server *\/$/;"	m	struct:serverent
+dlclose	dlfcn.c	/^int dlclose( void *handle )$/;"	f
+dlerror	dlfcn.c	/^char *dlerror( void )$/;"	f
+dlopen	dlfcn.c	/^void *dlopen( const char *file, int mode )$/;"	f
+dlsym	dlfcn.c	/^void *dlsym( void *handle, const char *name )$/;"	f
+donetime	tsocks.h	/^	long donetime;$/;"	m	struct:connreq
+download_file_withui	SocksHook.c	/^lpfn_download_file_withui download_file_withui;$/;"	v
+download_file_withui_async	SocksHook.c	/^DWORD download_file_withui_async(wchar_t* caption, wchar_t* cancel, wchar_t* from, wchar_t* tofile)$/;"	f
+download_param	SocksHook.c	/^} download_param;$/;"	t	typeref:struct:__anon1	file:
+download_thread_routine	SocksHook.c	/^DWORD __stdcall download_thread_routine (void* p)$/;"	f
+dstip	tsocks.h	/^	int32_t dstip;$/;"	m	struct:sockreq
+dstport	tsocks.h	/^	int16_t dstport;$/;"	m	struct:sockreq
+endport	parser.h	/^	unsigned long endport;   \/* network                *\/$/;"	m	struct:networkent
+err	tsocks.h	/^	int err;$/;"	m	struct:connreq
+event2str	SocksHook.c	/^char* event2str(u_long argp) {$/;"	f
+event2str_select	SocksHook.c	/^char * event2str_select(int events)$/;"	f
+eventstrs	SocksHook.c	/^char* eventstrs(DWORD cEvents, const WSAEVENT *lphEvents) $/;"	f
+exceptstate	tsocks.h	/^	int exceptstate;$/;"	m	struct:connreq
+expect_events	tsocks.h	/^	int expect_events;$/;"	m	struct:connreq
+fill_servers_from_conf	SocksHook.c	/^int fill_servers_from_conf(char *conff, char ***argv)$/;"	f
+find_index_inarray	SocksHook.c	/^int find_index_inarray(int argc, char **argv, char *tofind)$/;"	f
+find_socks_request	SocksHook.c	/^static struct connreq *find_socks_request(int sockid, int includefinished) {$/;"	f	file:
+find_socks_request_event	SocksHook.c	/^static struct connreq *find_socks_request_event(HANDLE hEvent , int includefinished) {$/;"	f	file:
+free_char_array	SocksHook.c	/^void free_char_array(int argc, char **argv)$/;"	f
+free_config	parser.c	/^int free_config(struct parsedfile *config) $/;"	f
+from	SocksHook.c	/^	wchar_t* from;$/;"	m	struct:__anon1	file:
+get_conf_file_name	SocksHook.c	/^static char* get_conf_file_name() $/;"	f	file:
+get_file_name	SocksHook.c	/^char* get_file_name(char* ori_full_name, char* name_replaced, char* ext_replaced)$/;"	f
+get_filename_byext	SocksHook.c	/^char* get_filename_byext(char* ext_replaced)$/;"	f
+get_filename_bypath	SocksHook.c	/^char* get_filename_bypath(char* name_replaced, char* ext_replaced)$/;"	f
+get_modify_time	SocksHook.c	/^FILETIME get_modify_time(char *socksconf) $/;"	f
+get_next_baton_conn	SocksHook.c	/^struct connreq *get_next_baton_conn()$/;"	f
+get_random_num	SocksHook.c	/^int get_random_num(int range)$/;"	f
+get_random_socks	SocksHook.c	/^char* get_random_socks(int argc, char **argv)$/;"	f
+get_socks_selected_result	SocksHook.c	/^int get_socks_selected_result()$/;"	f
+geteuid	win32_compatibility.h	47;"	d
+getpwuid	win32_compatibility.c	/^struct passwd *getpwuid(int id)$/;"	f
+getset_conf_option	SocksHook.c	/^static int getset_conf_option () $/;"	f	file:
+getuid	win32_compatibility.h	46;"	d
+gid_t	win32_compatibility.h	30;"	d
+global_object_add	dlfcn.c	/^static void global_object_add( HMODULE hModule )$/;"	f	file:
+global_object_rem	dlfcn.c	/^static void global_object_rem( HMODULE hModule )$/;"	f	file:
+global_objects	dlfcn.c	/^static HMODULE global_objects[MAX_OBJECTS];$/;"	v	file:
+hCodeTrick	SocksHook.c	/^HMODULE hCodeTrick;$/;"	v
+hHookConnect	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookWSAConnect	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookWaitForMultipleObjectsEx	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookclosesocket	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookgetpeername	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookgetsockname	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookioctlsocket	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookselect	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHooksetsockopt	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookwsaasyncselect	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookwsaenumnetworkevents	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hHookwsaeventselect	SocksHook.c	/^HMODULE hHookConnect, hHookWSAConnect, hHookclosesocket, hHookioctlsocket, hHookgetpeername, hHookgetsockname, hHookselect, hHookwsaasyncselect, hHookwsaeventselect, hHooksetsockopt, hHookWaitForMultipleObjectsEx, hHookwsaenumnetworkevents; $/;"	v
+hKernel32	SocksHook.c	/^HMODULE hWinsock, hKernel32;$/;"	v
+hSocksUi	SocksHook.c	/^HMODULE hSocksUi;$/;"	v
+hWinsock	SocksHook.c	/^HMODULE hWinsock, hKernel32;$/;"	v
+hWsaEvent	tsocks.h	/^	HANDLE hWsaEvent;$/;"	m	struct:connreq
+hWsaEvent_Fake	tsocks.h	/^	HANDLE hWsaEvent_Fake;$/;"	m	struct:connreq
+handle_defpass	parser.c	/^static int handle_defpass(struct parsedfile *config, int lineno, char *value) {$/;"	f	file:
+handle_defuser	parser.c	/^static int handle_defuser(struct parsedfile *config, int lineno, char *value) {$/;"	f	file:
+handle_endpath	parser.c	/^static int handle_endpath(struct parsedfile *config, int lineno, int nowords, char *words[]) {$/;"	f	file:
+handle_line	parser.c	/^static int handle_line(struct parsedfile *config, char *line, int lineno) {$/;"	f	file:
+handle_local	parser.c	/^static int handle_local(struct parsedfile *config, int lineno, char *value) {$/;"	f	file:
+handle_path	parser.c	/^static int handle_path(struct parsedfile *config, int lineno, int nowords, char *words[]) {$/;"	f	file:
+handle_port	parser.c	/^static int handle_port(struct parsedfile *config, int lineno, char *value) {$/;"	f	file:
+handle_reaches	parser.c	/^static int handle_reaches(struct parsedfile *config, int lineno, char *value) {$/;"	f	file:
+handle_request	SocksHook.c	/^static int handle_request(struct connreq *conn) {$/;"	f	file:
+handle_server	parser.c	/^static int handle_server(struct parsedfile *config, int lineno, char *value) {$/;"	f	file:
+handle_type	parser.c	/^static int handle_type(struct parsedfile *config, int lineno, char *value) {$/;"	f	file:
+hook_WSAAsyncSelect	SocksHook.c	/^int PASCAL hook_WSAAsyncSelect(SOCKET s, HWND hWnd, u_int wMsg, long lEvent) {$/;"	f
+hook_WSAConnect	SocksHook.c	/^int PASCAL hook_WSAConnect(SOCKET s, const struct sockaddr *name, int namelen, LPWSABUF lpCallerData, LPWSABUF lpCalleeData, LPQOS lpSQOS, LPQOS lpGQOS)$/;"	f
+hook_WSAEnumNetworkEvents	SocksHook.c	/^int hook_WSAEnumNetworkEvents(SOCKET s, WSAEVENT hEventObject, LPWSANETWORKEVENTS lpNetworkEvents) $/;"	f
+hook_WSAEventSelect	SocksHook.c	/^int hook_WSAEventSelect(SOCKET s, WSAEVENT hEventObject, long lNetworkEvents)$/;"	f
+hook_WaitForMultipleObjectsEx	SocksHook.c	/^DWORD WINAPI hook_WaitForMultipleObjectsEx (DWORD cEvents, HANDLE *lphEvents, BOOL fWaitAll, DWORD dwTimeout, BOOL fAlertable)$/;"	f
+hook_closesocket	SocksHook.c	/^int PASCAL hook_closesocket(SOCKET s) {$/;"	f
+hook_connect	SocksHook.c	/^int PASCAL hook_connect(SOCKET s, const struct sockaddr *name, int namelen)$/;"	f
+hook_getpeername	SocksHook.c	/^int PASCAL hook_getpeername(SOCKET s, struct sockaddr *name, int *namelen) {$/;"	f
+hook_getsockname	SocksHook.c	/^int PASCAL hook_getsockname(SOCKET s, struct sockaddr *name, int *namelen) {$/;"	f
+hook_ioctlsocket	SocksHook.c	/^int PASCAL hook_ioctlsocket(SOCKET s, long cmd, u_long *argp) {$/;"	f
+hook_select	SocksHook.c	/^int PASCAL hook_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, const struct timeval *timeout) $/;"	f
+hook_setsockopt	SocksHook.c	/^int PASCAL hook_setsockopt(SOCKET s, int level, int optname, const char *optval, int optlen) {$/;"	f
+ignore1	tsocks.h	/^	int16_t ignore1;$/;"	m	struct:sockrep
+ignore2	tsocks.h	/^	int32_t ignore2;$/;"	m	struct:sockrep
+index	win32_compatibility.c	/^char* index(const char * s, int i)$/;"	f
+inet_aton	win32_compatibility.h	83;"	d
+inet_aton_w32	win32_compatibility.c	/^int inet_aton_w32(const char *cp, struct in_addr *inp){$/;"	f
+inspecsocks	SocksHook.c	/^int inspecsocks(char* hoststr, char* portstr) {$/;"	f
+installhook	SocksHook.c	/^int installhook() $/;"	f
+is_connect_event	SocksHook.c	/^int is_connect_event(long lNetworkEvents)$/;"	f
+is_local	parser.c	/^int is_local(struct parsedfile *config, struct in_addr *testip) {$/;"	f
+kill_socks_request	SocksHook.c	/^static void kill_socks_request(struct connreq *conn) {$/;"	f	file:
+last_handle_request_rc	tsocks.h	/^	int last_handle_request_rc;$/;"	m	struct:connreq
+last_name	dlfcn.c	/^static char last_name[MAX_PATH];$/;"	v	file:
+left_events	tsocks.h	/^	int left_events;$/;"	m	struct:connreq
+lineno	parser.h	/^	int lineno; \/* Line number in conf file this path started on *\/$/;"	m	struct:serverent
+list_servers	parser.c	/^int list_servers(struct parsedfile *config, char ***argv) $/;"	f
+load_codetrick_dll	SocksHook.c	/^int load_codetrick_dll() $/;"	f
+load_socksui_dll	SocksHook.c	/^int load_socksui_dll()$/;"	f
+localip	parser.h	/^	struct in_addr localip; \/* Base IP of the network *\/$/;"	m	struct:networkent	typeref:struct:networkent::in_addr
+localnet	parser.h	/^	struct in_addr localnet; \/* Mask for the network *\/$/;"	m	struct:networkent	typeref:struct:networkent::in_addr
+localnets	parser.h	/^   struct networkent *localnets;$/;"	m	struct:parsedfile	typeref:struct:parsedfile::networkent
+lpfn_download_file_withui	SocksHook.c	/^typedef int (*lpfn_download_file_withui)(wchar_t *, wchar_t *, wchar_t *, wchar_t *);$/;"	t	file:
+lpfn_select_socks_server	SocksHook.c	/^typedef int (*lpfn_select_socks_server)(int , char **);$/;"	t	file:
+m2w	SocksHook.c	/^wchar_t* m2w(const char* mbs)$/;"	f
+make_netent	parser.c	/^int make_netent(char *value, struct networkent **ent) {$/;"	f
+master_bypass	tsocks.h	/^	int master_bypass;$/;"	m	struct:connreq
+networkent	parser.h	/^struct networkent {$/;"	s
+new_events	tsocks.h	/^	int new_events;$/;"	m	struct:connreq
+new_socks_request	SocksHook.c	/^static struct connreq *new_socks_request(int sockid, struct sockaddr_in *connaddr, $/;"	f	file:
+next	parser.h	/^	struct networkent *next; \/* Pointer to next network entry *\/$/;"	m	struct:networkent	typeref:struct:networkent::networkent
+next	parser.h	/^	struct serverent *next; \/* Pointer to next server entry *\/$/;"	m	struct:serverent	typeref:struct:serverent::serverent
+next	tsocks.h	/^	struct connreq *next;$/;"	m	struct:connreq	typeref:struct:connreq::connreq
+nextstate	tsocks.h	/^	int nextstate;$/;"	m	struct:connreq
+objects_list	Makefile	/^objects_list = parser.o SocksHook.o win32_compatibility.o session_funcs.o$/;"	m
+output_name	Makefile	/^output_name = $(EXECS)$/;"	m
+parsedfile	parser.h	/^struct parsedfile {$/;"	s
+passwd	win32_compatibility.h	/^struct passwd{$/;"	s
+path	tsocks.h	/^	struct serverent *path;$/;"	m	struct:connreq	typeref:struct:connreq::serverent
+paths	parser.h	/^   struct serverent *paths;$/;"	m	struct:parsedfile	typeref:struct:parsedfile::serverent
+pick_server	parser.c	/^int pick_server(struct parsedfile *config, struct serverent **ent, $/;"	f
+pid	tsocks.h	/^	long pid;$/;"	m	struct:connreq
+port	parser.h	/^	int port; \/* Port number of server *\/$/;"	m	struct:serverent
+print_hexstring	SocksHook.c	/^void print_hexstring(char* title, void *p, int len)$/;"	f
+pw_dir	win32_compatibility.h	/^              char    *pw_dir;        \/* home directory *\/$/;"	m	struct:passwd
+pw_gecos	win32_compatibility.h	/^              char    *pw_gecos;      \/* real name *\/$/;"	m	struct:passwd
+pw_gid	win32_compatibility.h	/^              gid_t   pw_gid;         \/* group id *\/$/;"	m	struct:passwd
+pw_name	win32_compatibility.h	/^              char    *pw_name;       \/* user name *\/$/;"	m	struct:passwd
+pw_passwd	win32_compatibility.h	/^              char    *pw_passwd;     \/* user password *\/$/;"	m	struct:passwd
+pw_shell	win32_compatibility.h	/^              char    *pw_shell;      \/* shell program *\/$/;"	m	struct:passwd
+pw_uid	win32_compatibility.h	/^              uid_t   pw_uid;         \/* user id *\/$/;"	m	struct:passwd
+pwdwin32_standard	win32_compatibility.c	/^struct passwd pwdwin32_standard={NULL,"*",1,1,"Win32 User",".","command.com"};$/;"	v	typeref:struct:passwd
+reachnets	parser.h	/^	struct networkent *reachnets; \/* Linked list of nets from this server *\/$/;"	m	struct:serverent	typeref:struct:serverent::networkent
+read_config	parser.c	/^int read_config (char *filename, struct parsedfile *config) $/;"	f
+read_socksv4_req	SocksHook.c	/^static int read_socksv4_req(struct connreq *conn) {$/;"	f	file:
+read_socksv5_auth	SocksHook.c	/^static int read_socksv5_auth(struct connreq *conn) {$/;"	f	file:
+read_socksv5_connect	SocksHook.c	/^static int read_socksv5_connect(struct connreq *conn) {$/;"	f	file:
+read_socksv5_method	SocksHook.c	/^static int read_socksv5_method(struct connreq *conn) {$/;"	f	file:
+realclosesocket	SocksHook.c	/^LPFN_CLOSESOCKET realclosesocket;$/;"	v
+realconnect	SocksHook.c	/^LPFN_CONNECT realconnect;$/;"	v
+realgetpeername	SocksHook.c	/^LPFN_GETPEERNAME realgetpeername;$/;"	v
+realgetsockname	SocksHook.c	/^LPFN_GETSOCKNAME realgetsockname;$/;"	v
+realioctlsocket	SocksHook.c	/^LPFN_IOCTLSOCKET realioctlsocket;$/;"	v
+realselect	SocksHook.c	/^LPFN_SELECT realselect;$/;"	v
+realsetsockopt	SocksHook.c	/^LPFN_SETSOCKOPT realsetsockopt;$/;"	v
+realwaitformultipleobjectsex	SocksHook.c	/^LPFN_WAITFORMULTIPLEOBJECTSEX realwaitformultipleobjectsex;$/;"	v
+realwsaasyncselect	SocksHook.c	/^LPFN_WSAASYNCSELECT realwsaasyncselect;$/;"	v
+realwsaconnect	SocksHook.c	/^LPFN_WSACONNECT realwsaconnect;$/;"	v
+realwsaenumnetworkevents	SocksHook.c	/^LPFN_WSAENUMNETWORKEVENTS realwsaenumnetworkevents;$/;"	v
+realwsaeventselect	SocksHook.c	/^LPFN_WSAEVENTSELECT realwsaeventselect;$/;"	v
+recv_buffer	SocksHook.c	/^static int recv_buffer(struct connreq *conn) $/;"	f	file:
+removehook	SocksHook.c	/^int removehook() $/;"	f
+requests	SocksHook.c	/^static struct connreq *requests = NULL;$/;"	v	typeref:struct:connreq	file:
+resolve_ip	SocksHook.c	/^unsigned int resolve_ip(char *host, int showmsg, int allownames) $/;"	f
+result	tsocks.h	/^	int8_t result;$/;"	m	struct:sockrep
+scan_baton	tsocks.h	/^	long scan_baton;$/;"	m	struct:connreq
+select_socks_server	SocksHook.c	/^lpfn_select_socks_server select_socks_server;$/;"	v
+select_wait	SocksHook.c	/^void select_wait(long sec, long usec)$/;"	f
+selected_index	SocksHook.c	/^static int selected_index = -1;$/;"	v	file:
+send_buffer	SocksHook.c	/^static int send_buffer(struct connreq *conn) {$/;"	f	file:
+send_request	SocksHook.c	/^int send_request(struct sockaddr_in *server, void *req, int reqlen, void *rep, int replen) {$/;"	f
+send_socks_request	SocksHook.c	/^static int send_socks_request(struct connreq *conn) {$/;"	f	file:
+send_socksv4_request	SocksHook.c	/^static int send_socksv4_request(struct connreq *conn) {$/;"	f	file:
+send_socksv5_connect	SocksHook.c	/^static int send_socksv5_connect(struct connreq *conn) {$/;"	f	file:
+send_socksv5_method	SocksHook.c	/^static int send_socksv5_method(struct connreq *conn) {$/;"	f	file:
+serveraddr	tsocks.h	/^	struct sockaddr_in serveraddr;$/;"	m	struct:connreq	typeref:struct:connreq::sockaddr_in
+serverent	parser.h	/^struct serverent {$/;"	s
+snprintf	win32_compatibility.h	65;"	d
+sockid	tsocks.h	/^	int sockid;$/;"	m	struct:connreq
+sockrep	tsocks.h	/^struct sockrep {$/;"	s
+sockreq	tsocks.h	/^struct sockreq {$/;"	s
+socks_server_to_confurl	SocksHook.c	/^char *socks_server_to_confurl(char *socks_server, char *confname) $/;"	f
+socks_thread_enumevents	SocksHook.c	/^DWORD WINAPI socks_thread_enumevents(struct connreq *conn)$/;"	f
+socks_thread_select	SocksHook.c	/^DWORD WINAPI socks_thread_select(struct connreq *conn)$/;"	f
+src_prefix	Makefile	/^src_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/i686-pc-mingw32$/;"	m
+startport	parser.h	/^	unsigned long startport; \/* Range of ports for the *\/$/;"	m	struct:networkent
+starttime	tsocks.h	/^	long starttime;$/;"	m	struct:connreq
+state	tsocks.h	/^	int state;$/;"	m	struct:connreq
+state2str	SocksHook.c	/^char* state2str(int state)$/;"	f
+strsplit	parser.c	/^char *strsplit(char *separator, char **text, const char *search) {$/;"	f
+subcall_select	SocksHook.c	/^int subcall_select(struct connreq *conn, long sec, long usec) $/;"	f
+suid	SocksHook.c	/^static int suid = 0;$/;"	v	file:
+threadevent	tsocks.h	/^	HANDLE threadevent, threadevent_select;$/;"	m	struct:connreq
+threadevent_select	tsocks.h	/^	HANDLE threadevent, threadevent_select;$/;"	m	struct:connreq
+tofile	SocksHook.c	/^	wchar_t* tofile;$/;"	m	struct:__anon1	file:
+tokenize	parser.c	/^static int tokenize(char *line, int arrsize, char *tokens[]) {$/;"	f	file:
+type	parser.h	/^	int type; \/* Type of server (4\/5) *\/$/;"	m	struct:serverent
+uid_t	win32_compatibility.h	29;"	d
+usleep	win32_compatibility.h	58;"	d
+version	tsocks.h	/^	int8_t version;$/;"	m	struct:sockrep
+version	tsocks.h	/^	int8_t version;$/;"	m	struct:sockreq
+vsnprintf	win32_compatibility.h	74;"	d
+w2m	SocksHook.c	/^char* w2m(const wchar_t* wcs)$/;"	f
+waitup	tsocks.h	/^	int waitup;$/;"	m	struct:connreq

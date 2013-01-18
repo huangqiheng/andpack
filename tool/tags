@@ -1,0 +1,37 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	./Makefile	/^CC = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+CFLAGS	./Makefile	/^CFLAGS = -I$(src_prefix)\/include -Os$/;"	m
+LD	./Makefile	/^LD = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+LDFLAGS	./Makefile	/^LDFLAGS = -L$(src_prefix)\/lib -s -mwindows -lcomdlg32 $/;"	m
+LIBOUT	./Makefile	/^LIBOUT = ..\/bin\/tool$/;"	m
+LIBS	./Makefile	/^LIBS = $/;"	m
+MAKE	./Makefile	/^MAKE = make --no-print-directory$/;"	m
+ResetFileExt	./bin2inc.c	/^char* ResetFileExt(char* buffer, char* newext)$/;"	f
+ResetShortFileName	./bin2inc.c	/^char* ResetShortFileName(char* buffer, char* newname)$/;"	f
+SHELL	./Makefile	/^SHELL = \/bin\/sh$/;"	m
+all_names	./Makefile	/^all_names = $(output_name) $(output_name2)$/;"	m
+bin2inc_prefix	./bin2inc.c	6;"	d	file:
+bin_prefix	./Makefile	/^bin_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/bin$/;"	m
+binfile_to_srcfile	./bin2head.c	/^void binfile_to_srcfile(char* bin_file_name, char* src_file_name)$/;"	f
+extra_list	./Makefile	/^extra_list = ..\/andpack\/log_print.o$/;"	m
+get_init_file	./bin2inc.c	/^char* get_init_file(char* path, char* file_name)$/;"	f
+get_init_tosave_file	./bin2inc.c	/^char* get_init_tosave_file(char* path, char* file_name)$/;"	f
+get_short_filename	./bin2inc.c	/^char* get_short_filename(char* buffer)$/;"	f
+is_path_break	./bin2head.c	/^int is_path_break(char char2chk)$/;"	f
+main	./bin2inc.c	/^int main (int argc, char *argv[])$/;"	f
+main	./bin2src.c	/^int main(int argc, char* argv[])$/;"	f
+make_capsule_headfile	./bin2head.c	/^void make_capsule_headfile(char* filename, void* file_base, unsigned long size_of_file) $/;"	f
+obj_lst_x11	./Makefile	/^obj_lst_x11 = bin2src.o bin2head.o$/;"	m
+objects_list	./Makefile	/^objects_list = bin2inc.o bin2head.o$/;"	m
+output_name	./Makefile	/^output_name = bin2inc.exe$/;"	m
+output_name2	./Makefile	/^output_name2 = bin2src$/;"	m
+read_file	./bin2head.c	/^void* read_file(char* input_file, unsigned long* file_size) $/;"	f
+seek_short_file_name	./bin2head.c	/^char* seek_short_file_name(char* buffer)$/;"	f
+select_target_file	./bin2inc.c	/^char* select_target_file(char* init_file)$/;"	f
+select_tosave_file	./bin2inc.c	/^char* select_tosave_file(char* init_file)$/;"	f
+src_prefix	./Makefile	/^src_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/i686-pc-mingw32$/;"	m

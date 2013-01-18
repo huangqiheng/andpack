@@ -1,0 +1,575 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Advance	list.c	/^        Advance( Position P )$/;"	f
+Array	queue.c	/^            ElementType *Array;$/;"	m	struct:QueueRecord	file:
+Array	stackar.c	/^            ElementType *Array;$/;"	m	struct:StackRecord	file:
+BuildImportTable	dll_loader.c	/^BOOL BuildImportTable(HMODULE hModule)$/;"	f
+CC	Makefile	/^CC = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -I$(src_prefix)\/include -I..\/system $(shell pkg-config --cflags $(pc)\/mxml.pc) -Os$/;"	m
+CXX	Makefile	/^CXX = $(bin_prefix)\/$(shell $(fltk-config) --cxx)$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS = $(shell $(fltk-config) --use-gl --use-images --cxxflags) $(shell pkg-config --cflags $(pc)\/mxml.pc) -I. -I..\/system -Os$/;"	m
+CXXLD	Makefile	/^CXXLD = $(CXX)$/;"	m
+CXXLDFLAGS	Makefile	/^CXXLDFLAGS = $(shell $(fltk-config) --use-gl --use-images --ldstaticflags) $(shell pkg-config --libs $(pc)\/mxml.pc) -s -liconv -lole32 -lrpcrt4$/;"	m
+Capacity	queue.c	/^            int Capacity;$/;"	m	struct:QueueRecord	file:
+Capacity	stackar.c	/^            int Capacity;$/;"	m	struct:StackRecord	file:
+CorrectResourceRVA	dll_in_section.c	/^int CorrectResourceRVA(void *packer_imagebase, const char* res_section_name, const char* app_section_name, long* data_entry_list)$/;"	f
+CreateQueue	queue.c	/^        CreateQueue( int MaxElements )$/;"	f
+CreateStack	stackar.c	/^        CreateStack( int MaxElements )$/;"	f
+DAEMON_WAIT_TIMEOUT	global.h	10;"	d
+DATADIRECTORY	dll_in_section.c	9;"	d	file:
+DATADIRECTORY	dll_loader.c	9;"	d	file:
+DEFAULT_OUTPUT	global.h	12;"	d
+DEFAULT_PLUGIN	global.h	13;"	d
+DLLENTRY	dll_in_section.c	11;"	d	file:
+DLLENTRY	dll_loader.c	11;"	d	file:
+DLL_MODULE_ATTACH	dll_loader.c	21;"	d	file:
+DLL_MODULE_DETACH	dll_loader.c	22;"	d	file:
+DbgPrint	__message_comm.c	/^static char* DbgPrint(const char* format, ...)$/;"	f	file:
+DbgPrint	global.c	/^char* DbgPrint(const char* format, ...)$/;"	f
+DbgPrint	message_comm.c	/^static char* DbgPrint(const char* format, ...)$/;"	f	file:
+DbgPrint_s	xml_in_section.c	/^static void DbgPrint_s(const char* format, ...)$/;"	f	file:
+Delete	list.c	/^        Delete( ElementType X, List L )$/;"	f
+DeleteList	list.c	/^        DeleteList( List L )$/;"	f
+Dequeue	queue.c	/^        Dequeue( Queue Q )$/;"	f
+DisposeQueue	queue.c	/^        DisposeQueue( Queue Q )$/;"	f
+DisposeStack	stackar.c	/^        DisposeStack( Stack S )$/;"	f
+DllEntryProc	dll_loader.h	/^typedef BOOL (WINAPI *DllEntryProc) (HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved);$/;"	t
+DllMain	packer_dll.c	/^BOOL WINAPI DllMain (HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpReserved)$/;"	f
+DllMain	session_dll.c	/^BOOL WINAPI DllMain (HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpReserved)$/;"	f
+EIP_HOOK_LEADER	threadpower.c	/^}__attribute__ ((packed, aligned(1))) EIP_HOOK_LEADER;$/;"	t	typeref:struct:__anon3	file:
+ENTRYRVA	dll_in_section.c	12;"	d	file:
+ENTRYRVA	dll_loader.c	13;"	d	file:
+ERROR_ALLOC_RESERVE	dll_loader.h	13;"	d
+ERROR_COPYSECTIONS	dll_loader.h	14;"	d
+ERROR_DOS_HEADER	dll_loader.h	11;"	d
+ERROR_ENTRY_RET_FALSE	dll_loader.h	17;"	d
+ERROR_FIX_IMPORTTABLE	dll_loader.h	15;"	d
+ERROR_INITIAL_FUNCTIONS	dll_loader.h	10;"	d
+ERROR_INVALID_IMAGE	dll_loader.h	9;"	d
+ERROR_NOTFOUND_ENTRY	dll_loader.h	16;"	d
+ERROR_NT_HEADERS	dll_loader.h	12;"	d
+ERROR_UNKNOW	dll_loader.h	8;"	d
+EVENT_ITEM	__message_comm.c	/^} EVENT_ITEM;$/;"	t	typeref:struct:_EVENT_ITEM	file:
+EVENT_ITEM	message_comm.c	/^} EVENT_ITEM;$/;"	t	typeref:struct:_EVENT_ITEM	file:
+Element	list.c	/^            ElementType Element;$/;"	m	struct:Node	file:
+ElementType	list.h	/^        typedef int ElementType;$/;"	t
+ElementType	queue.h	/^        typedef int ElementType;$/;"	t
+ElementType	stackar.h	/^typedef int ElementType;$/;"	t
+EmptyTOS	stackar.c	5;"	d	file:
+EncodingConv	copack_exe.cxx	/^char * EncodingConv(  const char * in, char *encFrom, char *encTo )$/;"	f
+Enqueue	queue.c	/^        Enqueue( ElementType X, Queue Q )$/;"	f
+EnumChildNodeSize	dll_in_section.c	/^long EnumChildNodeSize(long* data_entry_list, const void* lpImageBase, PIMAGE_NT_HEADERS pNtHeaders, DWORD tableAddress, PIMAGE_RESOURCE_DIRECTORY_ENTRY pEntry, int depth)$/;"	f
+Error	fatal.h	4;"	d
+FatalError	fatal.h	5;"	d
+FinalizeSections	dll_loader.c	/^void FinalizeSections(LPSECTION_BACKUP backup)$/;"	f
+Find	list.c	/^        Find( ElementType X, List L )$/;"	f
+FindPrevious	list.c	/^        FindPrevious( ElementType X, List L )$/;"	f
+First	list.c	/^        First( List L )$/;"	f
+FreeImportedDll	dll_loader.c	/^void FreeImportedDll(HMODULE hModule)$/;"	f
+FreePlugin	dll_loader.c	/^BOOL	FreePlugin(HMODULE hModule, LPVOID lpReserved)$/;"	f
+Front	queue.c	/^            int Front;$/;"	m	struct:QueueRecord	file:
+Front	queue.c	/^        Front( Queue Q )$/;"	f
+FrontAndDequeue	queue.c	/^        FrontAndDequeue( Queue Q )$/;"	f
+GETMODULEFILENAMEEX	global.c	/^DWORD (WINAPI *GETMODULEFILENAMEEX)($/;"	t	file:
+GetProcEATAddress	dll_loader.c	/^LPDWORD GetProcEATAddress(HMODULE hModule, PCHAR lpFunName)$/;"	f
+GetProcessName	global.c	/^char* GetProcessName(DWORD PID)$/;"	f
+Header	list.c	/^        Header( List L )$/;"	f
+IMAGEBASE	dll_in_section.c	14;"	d	file:
+IMAGEBASE	dll_loader.c	15;"	d	file:
+IMAGEBASE	global.h	20;"	d
+IMAGE_SIZEOF_BASE_RELOCATION	dll_loader.c	18;"	d	file:
+Insert	list.c	/^        Insert( ElementType X, List L, Position P )$/;"	f
+IsEmptyLst	list.c	/^        IsEmptyLst( List L )$/;"	f
+IsEmptyQue	queue.c	/^        IsEmptyQue( Queue Q )$/;"	f
+IsEmptyStack	stackar.c	/^        IsEmptyStack( Stack S )$/;"	f
+IsFull	queue.c	/^        IsFull( Queue Q )$/;"	f
+IsFullStack	stackar.c	/^        IsFullStack( Stack S )$/;"	f
+IsLast	list.c	/^        int IsLast( Position P, List L )$/;"	f
+LD	Makefile	/^LD = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = -L$(src_prefix)\/lib -s $(shell pkg-config --libs $(pc)\/mxml.pc) -lole32 -lrpcrt4$/;"	m
+LPSECTION_BACKUP	dll_loader.c	/^} SECTION_BACKUP, *LPSECTION_BACKUP;$/;"	t	typeref:struct:_SECTION_BACKUP	file:
+List	list.h	/^        typedef PtrToNode List;$/;"	t
+LoadPlugin	dll_loader.c	/^HMODULE LoadPlugin(LPVOID lpFileBase, LPVOID lpReserved)$/;"	f
+MAINOUT	Makefile	/^MAINOUT = ..\/bin$/;"	m
+MAKE	Makefile	/^MAKE = make --no-print-directory$/;"	m
+MAPVIEW_HEADER	__message_comm.c	/^} __attribute__ ((packed, aligned(1))) MAPVIEW_HEADER;$/;"	t	typeref:struct:__anon5	file:
+MSG_THREAD_DATA	__message_comm.c	/^} MSG_THREAD_DATA;$/;"	t	typeref:struct:_MSG_THREAD_DATA	file:
+MakeEmptyLst	list.c	/^        MakeEmptyLst( List L )$/;"	f
+MakeEmptyQue	queue.c	/^        MakeEmptyQue( Queue Q )$/;"	f
+MakeEmptyStack	stackar.c	/^        MakeEmptyStack( Stack S )$/;"	f
+MapSections	dll_loader.c	/^LPSECTION_BACKUP MapSections (PCHAR pImageBase, PCHAR pFileBase)$/;"	f
+MinQueueSize	queue.c	5;"	d	file:
+MinStackSize	stackar.c	6;"	d	file:
+NAME_TO_MAPVIEW	__message_comm.c	/^} NAME_TO_MAPVIEW;$/;"	t	typeref:struct:_NAME_TO_MAPVIEW	file:
+NTHEADER	dll_in_section.c	8;"	d	file:
+NTHEADER	dll_loader.c	8;"	d	file:
+NTHEADER	global.h	17;"	d
+NTHEADER	xml_in_section.c	6;"	d	file:
+Next	list.c	/^            Position    Next;$/;"	m	struct:Node	file:
+Node	list.c	/^        struct Node$/;"	s	file:
+NtQueryInformationThread	threadpower.c	/^pfnNtQueryInformationThread NtQueryInformationThread = NULL;$/;"	v
+Packer	copack.cxx	/^Packer::Packer() {$/;"	f	class:Packer
+Packer	copack.h	/^class Packer {$/;"	c
+PerformBaseRelocation	dll_loader.c	/^void PerformBaseRelocation(HMODULE hModule, SIZE_T delta)$/;"	f
+Pop	stackar.c	/^        Pop( Stack S )$/;"	f
+Position	list.h	/^        typedef PtrToNode Position;$/;"	t
+PtrToNode	list.h	/^        typedef struct Node *PtrToNode;$/;"	t	typeref:struct:Node
+Push	stackar.c	/^        Push( ElementType X, Stack S )$/;"	f
+Queue	queue.h	/^        typedef struct QueueRecord *Queue;$/;"	t	typeref:struct:QueueRecord
+QueueRecord	queue.c	/^        struct QueueRecord$/;"	s	file:
+REALLOC_EXTEND_SIZE	package.c	12;"	d	file:
+RVATOVA	__message_comm.c	8;"	d	file:
+RVATOVA	dll_in_section.c	6;"	d	file:
+RVATOVA	dll_loader.c	6;"	d	file:
+RVATOVA	global.h	15;"	d
+RVATOVA	message_comm.c	9;"	d	file:
+RVATOVA	xml_in_section.c	5;"	d	file:
+Rear	queue.c	/^            int Rear;$/;"	m	struct:QueueRecord	file:
+Retrieve	list.c	/^        Retrieve( Position P )$/;"	f
+Rva2FileOffset	dll_loader.c	/^static long Rva2FileOffset(PIMAGE_NT_HEADERS pNtHeader, long RVA, long *SizeOfRawData)$/;"	f	file:
+SEARCH_PARAM	package.h	/^} SEARCH_PARAM;$/;"	t	typeref:struct:__anon2
+SECTION_BACKUP	dll_loader.c	/^} SECTION_BACKUP, *LPSECTION_BACKUP;$/;"	t	typeref:struct:_SECTION_BACKUP	file:
+SHARE	session_dll.c	/^DWORD daemon_process_id SHARE = 0;$/;"	v
+SHARE	session_dll.c	/^DWORD daemon_start_tick SHARE = 0;$/;"	v
+SHARE	session_dll.c	/^HHOOK hkKey SHARE = NULL;				$/;"	v
+SHARE	session_dll.c	/^char share_xml_buffer[share_buffer_max_size] SHARE = {0};$/;"	v
+SHARE	session_dll.c	/^long session_counter SHARE = 0;$/;"	v
+SHARE	session_dll.c	18;"	d	file:
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+SIZEOFIMAGE	dll_in_section.c	13;"	d	file:
+SIZEOFIMAGE	dll_loader.c	14;"	d	file:
+SIZEOFIMAGE	global.h	19;"	d
+Size	queue.c	/^            int Size;$/;"	m	struct:QueueRecord	file:
+Stack	stackar.h	/^typedef struct StackRecord *Stack;$/;"	t	typeref:struct:StackRecord
+StackRecord	stackar.c	/^        struct StackRecord$/;"	s	file:
+Succ	queue.c	/^        Succ( int Value, Queue Q )$/;"	f	file:
+TOOLOUT	Makefile	/^TOOLOUT = ..\/bin\/tool$/;"	m
+Top	stackar.c	/^        Top( Stack S )$/;"	f
+TopAndPop	stackar.c	/^        TopAndPop( Stack S )$/;"	f
+TopOfStack	stackar.c	/^            int TopOfStack;$/;"	m	struct:StackRecord	file:
+UnicodeToANSI	dll_in_section.c	/^char * UnicodeToANSI( const wchar_t* str )$/;"	f
+VALIDRANGE	dll_in_section.c	10;"	d	file:
+VALIDRANGE	dll_loader.c	10;"	d	file:
+VALIDRANGE	global.h	18;"	d
+VATORVA	dll_in_section.c	7;"	d	file:
+VATORVA	dll_loader.c	7;"	d	file:
+VATORVA	global.h	16;"	d
+WAIT_ITEM	__message_comm.c	/^} WAIT_ITEM;$/;"	t	typeref:struct:_WAIT_ITEM	file:
+WAIT_QUEUE_MSG	__message_comm.c	10;"	d	file:
+WAIT_QUEUE_MSG	message_comm.c	11;"	d	file:
+_EVENT_ITEM	__message_comm.c	/^typedef struct _EVENT_ITEM$/;"	s	file:
+_EVENT_ITEM	message_comm.c	/^typedef struct _EVENT_ITEM$/;"	s	file:
+_List_H	list.h	5;"	d
+_MSG_THREAD_DATA	__message_comm.c	/^typedef struct _MSG_THREAD_DATA{$/;"	s	file:
+_NAME_TO_MAPVIEW	__message_comm.c	/^typedef struct _NAME_TO_MAPVIEW$/;"	s	file:
+_Queue_h	queue.h	4;"	d
+_SECTION_BACKUP	dll_loader.c	/^typedef struct _SECTION_BACKUP {$/;"	s	file:
+_Stack_h	stackar.h	4;"	d
+_WAIT_ITEM	__message_comm.c	/^typedef struct _WAIT_ITEM$/;"	s	file:
+_WIN32_WINNT	__message_comm.c	1;"	d	file:
+_WIN32_WINNT	message_comm.c	1;"	d	file:
+_WIN32_WINNT	session_dll.c	1;"	d	file:
+_WIN32_WINNT	threadpower.c	1;"	d	file:
+__FreeLibrary	dll_loader.c	/^BOOL __FreeLibrary(HMODULE *NotifyMods, HMODULE hModule, LPVOID lpReserved)$/;"	f
+__FreeLibrary__	dll_loader.c	/^BOOL __FreeLibrary__(HMODULE hModule, LPVOID lpReserved)$/;"	f
+__GetMemoryFileName	dll_loader.c	/^PCHAR __GetMemoryFileName(LPVOID pDllFileBase)$/;"	f
+__GetModuleFileName	dll_loader.c	/^PCHAR __GetModuleFileName(HMODULE hDllModule)$/;"	f
+__GetProcAddress	dll_loader.c	/^FARPROC __GetProcAddress(HMODULE hModule, PCHAR lpFunName)$/;"	f
+__LoadLibrary	dll_loader.c	/^HMODULE __LoadLibrary(HMODULE *NotifyMods, LPVOID lpFileBase, LPVOID lpReserved)$/;"	f
+__NotifyLibrary	dll_loader.c	/^BOOL __NotifyLibrary(HMODULE hModule, HMODULE BeNotify, DWORD Reason)$/;"	f
+__NotifyLibrary__	dll_loader.c	/^BOOL __NotifyLibrary__(HMODULE hModule, HMODULE BeNotify, DWORD Reason)$/;"	f
+__declspec	packer_dll.c	/^__declspec(dllexport) void on_daemon_exit(long session_counter, int async_thread)$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) PACKAGE* __stdcall get_package()$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) STARTUP* __stdcall get_startup()$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) const char* __stdcall get_session_sharekey(const char* type, const char* key)$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) const char** __stdcall get_parameter(HINSTANCE image, const char* catelog_name, const char* key_name)$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) const char** __stdcall get_parameters(HINSTANCE image, const char* catelog_name)$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) int __stdcall cls_hook()$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) int __stdcall set_hook()$/;"	f
+__declspec	session_dll.c	/^__declspec(dllexport) int __stdcall set_session_sharekey(const char* type, const char* key, const char* value)$/;"	f
+__dll_in_section_h_once__	dll_in_section.h	2;"	d
+__dll_loader_h_once__	dll_loader.h	2;"	d
+__global_h_once__	global.h	2;"	d
+__message_comm_h_once__	message_comm.h	2;"	d
+__package__	packer_dll.c	/^PACKAGE* __package__ = NULL;$/;"	v
+__package_h_once__	package.h	2;"	d
+__startup__	packer_dll.c	/^STARTUP* __startup__ = NULL;$/;"	v
+__thread_power_h_once__	threadpower.h	2;"	d
+__xml_in_section_h_once__	xml_in_section.h	2;"	d
+add_checklist_to_package	copack_exe.cxx	/^PACKAGE* add_checklist_to_package(Fl_Check_Browser* check_browser, STORE_ITEM* fill_item)$/;"	f
+add_item	copack_exe.cxx	/^void add_item(mxml_node_t *group, const char* name, const char* attr, const char* value)$/;"	f
+add_plugin_dlls_to_package	copack_exe.cxx	/^char* add_plugin_dlls_to_package(Fl_Hold_Browser* plugin_list, STORE_ITEM* fill_item)$/;"	f
+add_pluginapp_button	copack.h	/^  Fl_Button *add_pluginapp_button;$/;"	m	class:Packer
+add_pluginapp_text	copack.h	/^  Fl_Input *add_pluginapp_text;$/;"	m	class:Packer
+add_string_to_list	stub_exe.c	/^Position add_string_to_list(char* input_str, List list)$/;"	f
+address	dll_loader.c	/^	void *address;$/;"	m	struct:_SECTION_BACKUP	file:
+alloc_execute_mem	threadpower.c	/^void* alloc_execute_mem(void *codebase, size_t codesize)$/;"	f
+am_i_debuger	global.c	/^int am_i_debuger = -1;$/;"	v
+append_data_to_package	package.c	/^PACKAGE* append_data_to_package(void* mem_base, unsigned long mem_size, STORE_ITEM* fill_item)$/;"	f
+append_data_to_startup	package.c	/^STARTUP* append_data_to_startup(void* mem_base, unsigned long mem_size, STORE_ITEM* fill_item)$/;"	f
+append_file_name	global.c	/^char* append_file_name(char* src, char* append)$/;"	f
+append_file_to_package	package.c	/^PACKAGE* append_file_to_package(char* full_file_name, STORE_ITEM* fill_item)$/;"	f
+append_list_string_to_startup	package.c	/^STARTUP* append_list_string_to_startup(List list, STORE_ITEM* fill_item)$/;"	f
+append_section	dll_in_section.c	/^void* append_section(const void* target_file_base, long target_file_size, long* output_file_size, $/;"	f
+append_section_mainpe	dll_in_section.c	/^void* append_section_mainpe(const void* target_file_base, long target_file_size, long* output_file_size, $/;"	f
+append_section_raw	dll_in_section.c	/^void* append_section_raw(const void* target_file_base, long target_file_size, long* output_file_size,$/;"	f
+append_section_try	dll_in_section.c	/^long append_section_try(const void* target_file_base, long *section_va, long *section_raw)$/;"	f
+append_string_to_package	package.c	/^PACKAGE* append_string_to_package(char* add_str, STORE_ITEM* fill_item)$/;"	f
+append_string_to_startup	package.c	/^STARTUP* append_string_to_startup(char* add_str, STORE_ITEM* fill_item)$/;"	f
+bin2src	Makefile	/^bin2src = $(TOOLOUT)\/bin2src$/;"	m
+bin_prefix	Makefile	/^bin_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/bin$/;"	m
+buffer	__message_comm.c	/^	char buffer[0];$/;"	m	struct:__anon5	file:
+call_edx	threadpower.c	/^	short call_edx;$/;"	m	struct:__anon3	file:
+cb_	copack.cxx	/^void Packer::cb_(Fl_Button* o, void* v) {$/;"	f	class:Packer
+cb__i	copack.cxx	/^void Packer::cb__i(Fl_Button*, void*) {$/;"	f	class:Packer
+cell_data_head	__message_comm.c	/^} __attribute__ ((packed, aligned(1))) cell_data_head;$/;"	t	typeref:struct:__anon4	file:
+cell_data_head	message_comm.c	/^} __attribute__ ((packed, aligned(1))) cell_data_head;$/;"	t	typeref:struct:__anon1	file:
+cell_item_size	__message_comm.c	/^	int cell_item_size;$/;"	m	struct:__anon5	file:
+cell_size	__message_comm.c	/^	int cell_size;$/;"	m	struct:__anon5	file:
+cells_base_offset	__message_comm.c	/^	int cells_base_offset;$/;"	m	struct:__anon5	file:
+cells_count	__message_comm.c	/^	short cells_count;$/;"	m	struct:__anon5	file:
+change_file_ext	global.c	/^char* change_file_ext(char* buffer, const char* new_ext)$/;"	f
+characteristics	dll_loader.c	/^	long characteristics;$/;"	m	struct:_SECTION_BACKUP	file:
+check_off_plugin	copack_exe.cxx	/^void check_off_plugin(Fl_Hold_Browser* plugin_list, int index)$/;"	f
+check_on_plugin	copack_exe.cxx	/^void check_on_plugin(Fl_Hold_Browser* plugin_list, int index, char* path)$/;"	f
+client_name_map_head	__message_comm.c	/^	NAME_TO_MAPVIEW *client_name_map_head;$/;"	m	struct:_MSG_THREAD_DATA	file:
+cls_hook	daemon_exe.c	/^lpfn_cls_hook cls_hook;$/;"	v
+cmd_type	__message_comm.c	/^	unsigned int cmd_type;$/;"	m	struct:_EVENT_ITEM	file:
+cmd_type	message_comm.c	/^	unsigned int cmd_type;$/;"	m	struct:_EVENT_ITEM	file:
+copack_h	copack.h	4;"	d
+copack_make_package_apps	package.c	/^int copack_make_package_apps(PACKAGE* package, char* root_dir, char* output_dir)$/;"	f
+copack_name	Makefile	/^copack_name = copack.exe$/;"	m
+copack_obj_lst	Makefile	/^copack_obj_lst = copack_exe.o global.o copack.o package.o dll_in_section.o list.o queue.o stackar.o message_comm.o xml_in_section.o sync_funcs.o$/;"	m
+copy_pack	packer_dll.c	/^void* copy_pack(const void* becopy, const int size)$/;"	f
+crc32	global.c	/^unsigned int crc32(unsigned int crc,unsigned char *buffer, unsigned int size)  $/;"	f
+crc_table	global.c	/^static unsigned int crc_table[256];$/;"	v	file:
+crc_table_init	global.c	/^int crc_table_init = 0;$/;"	v
+create_new_mapview	__message_comm.c	/^NAME_TO_MAPVIEW* create_new_mapview(char* msg_name)$/;"	f
+current_process_name	global.c	/^char* current_process_name()$/;"	f
+daemon_message_debug	global.h	23;"	d
+daemon_message_id_base	global.h	22;"	d
+daemon_msg_name	packer_dll.c	/^char* daemon_msg_name = NULL;$/;"	v
+daemon_msg_name	session_dll.c	/^char* daemon_msg_name = NULL;$/;"	v
+daemon_name	Makefile	/^daemon_name = daemon.exe$/;"	m
+daemon_obj_lst	Makefile	/^daemon_obj_lst = daemon_exe.o global.o dll_in_section.o message_comm.o sync_funcs.o$/;"	m
+daemon_server_name	global.c	/^char* daemon_server_name = NULL;$/;"	v
+data	__message_comm.c	/^	char data[0];$/;"	m	struct:__anon4	file:
+data	message_comm.c	/^	char data[0];$/;"	m	struct:__anon1	file:
+dbg_msg	daemon_exe.c	/^void dbg_msg(const char* format, ...)$/;"	f
+dbgstr	global.c	/^int dbgstr(char* msg)$/;"	f
+debug_msg_cb	daemon_exe.c	/^int debug_msg_cb(void* msg_data, int msg_size)$/;"	f
+debug_print	global.h	25;"	d
+debug_print	message_comm.h	8;"	d
+default_plugin_root	copack_exe.cxx	/^char* default_plugin_root = NULL;$/;"	v
+default_prefix_name	__message_comm.c	9;"	d	file:
+default_prefix_name	message_comm.c	10;"	d	file:
+delete_2_files	packer_dll.c	/^int delete_2_files(STARTUP* startup, long session_counter)$/;"	f
+dependent_list	copack_exe.cxx	/^char*** dependent_list = NULL;$/;"	v
+dependent_list_count	copack_exe.cxx	/^int  dependent_list_count = 0;$/;"	v
+disable_reporter	global.c	/^void disable_reporter(char* msg_name)$/;"	f
+eip_hook	threadpower.c	/^EIP_HOOK_LEADER eip_hook = {0x68, 0x11111111, 0x9c60, 0x68, 0x22222222, 0xba, 0x33333333, 0xd2ff, 0x619d, 0xc3};$/;"	v
+enable_reporter	global.c	/^char* enable_reporter(HINSTANCE session_dll)$/;"	f
+enter_mutex_process	global.c	/^HANDLE enter_mutex_process(const char* mutex_name)$/;"	f
+enter_mutex_process_wait	global.c	/^HANDLE enter_mutex_process_wait(const char* mutex_name)$/;"	f
+entry_apps	copack.h	/^  Fl_Check_Browser *entry_apps;$/;"	m	class:Packer
+enum_parent_pid	global.c	/^DWORD enum_parent_pid(HANDLE snap_handle)$/;"	f
+enum_pid_exists	global.c	/^DWORD enum_pid_exists(HANDLE snap_handle, DWORD pid)$/;"	f
+error_cleanup_scene	stub_exe.c	/^char* error_cleanup_scene(char* root_dir)$/;"	f
+event_atom	__message_comm.c	/^	ATOM event_atom;$/;"	m	struct:_WAIT_ITEM	file:
+except_list	global.c	/^static char* except_list[] = {$/;"	v	file:
+file_map	__message_comm.c	/^	HANDLE file_map;$/;"	m	struct:_NAME_TO_MAPVIEW	file:
+file_to_xmlstr	xml_in_section.c	/^const char* file_to_xmlstr(void* file_base, const char* section_name)$/;"	f
+find_ext_dot	global.c	/^char* find_ext_dot(char* buffer, int* index)$/;"	f
+find_indexof_xmlfile	copack_exe.cxx	/^int find_indexof_xmlfile(Fl_Hold_Browser* plugin_list, char* xml_file)$/;"	f
+find_process_to_handle	global.c	/^int find_process_to_handle(char* full_process_name, lpfn_process_cb handle_cb, void* sender)$/;"	f
+find_repack_index	package.c	/^int find_repack_index(PACKAGE* package, const char* ori_name)$/;"	f
+find_repack_name	package.c	/^char* find_repack_name(PACKAGE* package, int index)$/;"	f
+find_root_path	stub_exe.c	/^char* find_root_path(char* realy_me_name, char* realy_fullname)$/;"	f
+fltk-config	Makefile	/^fltk-config=$(src_prefix)\/bin\/fltk-config$/;"	m
+fn_msg_recevier	message_comm.h	/^typedef int (*fn_msg_recevier)(void* msg_data, int msg_size);$/;"	t
+free_my_image	dll_loader.c	/^void free_my_image(void* param)$/;"	f
+free_tls	xml_in_section.c	/^void free_tls()$/;"	f
+g2u	copack_exe.cxx	/^char* g2u(const char* src)$/;"	f
+gb2312toutf8	copack_exe.cxx	/^int gb2312toutf8(const char *sourcebuf,size_t sourcelen,char *destbuf,size_t destlen)$/;"	f
+gen_guid_str	__message_comm.c	/^char* gen_guid_str()$/;"	f
+gen_guid_str	message_comm.c	/^char* gen_guid_str()$/;"	f
+get_catelog	xml_in_section.c	/^const char** get_catelog(const char* xmlstr, const char* catelog_name)$/;"	f
+get_eip_hook_leader	threadpower.c	/^DWORD get_eip_hook_leader(DWORD eip, LPTHREAD_START_ROUTINE lpStartAddress, LPVOID lpParameter)$/;"	f
+get_indexof_plugin_name	copack_exe.cxx	/^int get_indexof_plugin_name(Fl_Hold_Browser* plugin_list, char* path, char* plugin_name, $/;"	f
+get_keyvalue	xml_in_section.c	/^const char** get_keyvalue(const char* xmlstr, const char* catelog_name, const char* key_name)$/;"	f
+get_list_count	package.c	/^int get_list_count(List list)$/;"	f
+get_main_thread_id	threadpower.c	/^DWORD get_main_thread_id()$/;"	f
+get_module_base	dll_in_section.c	/^HMODULE get_module_base()$/;"	f
+get_module_myself	dll_loader.c	/^HMODULE get_module_myself()$/;"	f
+get_ori_app_from_file	package.c	/^void* get_ori_app_from_file(const char* app_file, long* app_file_size, int cover_repack)$/;"	f
+get_ori_name	packer_dll.c	/^char* get_ori_name(PACKAGE* package, STARTUP* startup, char* realy_full_name)$/;"	f
+get_output_dir	copack_exe.cxx	/^char* get_output_dir()$/;"	f
+get_package	daemon_exe.c	/^lpfn_get_package get_package;$/;"	v
+get_package	package.c	/^PACKAGE* get_package()$/;"	f
+get_package_section_main	dll_in_section.c	/^PACKAGE* get_package_section_main()$/;"	f
+get_package_section_me	dll_in_section.c	/^PACKAGE* get_package_section_me()$/;"	f
+get_parameter	daemon_exe.c	/^lpfn_get_parameter  get_parameter;$/;"	v
+get_parameters	daemon_exe.c	/^lpfn_get_parameters get_parameters;$/;"	v
+get_parent_process_id	global.c	/^DWORD get_parent_process_id()$/;"	f
+get_pid_cb	global.c	/^int get_pid_cb(void* sender, int* stop, DWORD pid, DWORD parent_pid)$/;"	f
+get_plugin_name_in_list	copack_exe.cxx	/^char* get_plugin_name_in_list(Fl_Hold_Browser* plugin_list, int index, int is_full_name)$/;"	f
+get_plugin_path	copack_exe.cxx	/^char* get_plugin_path()$/;"	f
+get_process_alive_id	global.c	/^DWORD get_process_alive_id(char* full_process_name)$/;"	f
+get_resource_dirs	dll_in_section.c	/^void* get_resource_dirs(const char* file_base, long file_size, long* res_dir_size, long* data_entry_list)$/;"	f
+get_section	dll_in_section.c	/^void* get_section(void* pe_base, const char* section_name)$/;"	f
+get_section	xml_in_section.c	/^static void* get_section(void* pe_base, const char* section_name)$/;"	f	file:
+get_section_main	dll_in_section.c	/^void* get_section_main(const char* section_name)$/;"	f
+get_section_me	dll_in_section.c	/^void* get_section_me(const char* section_name)$/;"	f
+get_section_raw	dll_in_section.c	/^void* get_section_raw(void* file_base, const char* section_name)$/;"	f
+get_section_raw	xml_in_section.c	/^static void* get_section_raw(void* file_base, const char* section_name)$/;"	f	file:
+get_spectial_section_byname	dll_in_section.c	/^PIMAGE_SECTION_HEADER get_spectial_section_byname(void* pe_base, const char *section_name)$/;"	f
+get_spectial_section_byname	xml_in_section.c	/^static PIMAGE_SECTION_HEADER get_spectial_section_byname(void* pe_base, const char *section_name)$/;"	f	file:
+get_startup	daemon_exe.c	/^lpfn_get_startup get_startup;$/;"	v
+get_startup	package.c	/^STARTUP* get_startup()$/;"	f
+get_startup_max_size	package.c	/^long get_startup_max_size()$/;"	f
+get_startup_section_main	dll_in_section.c	/^STARTUP* get_startup_section_main()$/;"	f
+get_startup_section_me	dll_in_section.c	/^STARTUP* get_startup_section_me()$/;"	f
+get_store_item_list	stub_exe.c	/^List get_store_item_list(char* root_dir, PACKAGE* package, STORE_ITEM dir_root)$/;"	f
+get_storepe_section_me	dll_in_section.c	/^void* get_storepe_section_me()$/;"	f
+get_sysparam_valint	daemon_exe.c	/^int get_sysparam_valint(const char* key, int default_val)$/;"	f
+get_sysparam_valstr	daemon_exe.c	/^const char* get_sysparam_valstr(const char* key, char* default_val)$/;"	f
+get_thread_data	__message_comm.c	/^MSG_THREAD_DATA* get_thread_data()$/;"	f
+get_thread_entry	threadpower.c	/^void* get_thread_entry(HANDLE thread_handle)$/;"	f
+get_tls_heap	xml_in_section.c	/^HANDLE get_tls_heap()$/;"	f
+get_xml_buff	copack_exe.cxx	/^Fl_Text_Buffer* get_xml_buff(Fl_Text_Editor* param_editor)$/;"	f
+get_xml_file	copack_exe.cxx	/^char* get_xml_file(Fl_Hold_Browser* plugin_list)$/;"	f
+hold_check	copack_exe.cxx	/^void hold_check(Fl_Hold_Browser* plugin_list, int index, int b)$/;"	f
+hold_checked	copack_exe.cxx	/^int hold_checked(Fl_Hold_Browser* plugin_list, int index)$/;"	f
+hold_nchecked	copack_exe.cxx	/^int hold_nchecked(Fl_Hold_Browser* plugin_list)$/;"	f
+idata_Check	copack.cxx	/^static unsigned char idata_Check[] =$/;"	v	file:
+idata_Delete	copack.cxx	/^static unsigned char idata_Delete[] =$/;"	v	file:
+image_to_xmlstr	xml_in_section.c	/^const char* image_to_xmlstr(void* image_base, const char* section_name)$/;"	f
+imemcpy	global.c	/^int imemcpy(char *dest,char *src,int len)$/;"	f
+imemcpy_me	dll_in_section.c	/^int imemcpy_me(char *dest,char *src,int len)$/;"	f
+init_crc_table	global.c	/^static void init_crc_table(void)  $/;"	f	file:
+init_dependent_list	copack_exe.cxx	/^void init_dependent_list(Fl_Hold_Browser* plugin_list)$/;"	f
+init_package	package.c	/^PACKAGE* init_package()$/;"	f
+init_share_memory	session_dll.c	/^void init_share_memory()$/;"	f
+init_solution_setting	copack_exe.cxx	/^void init_solution_setting(Packer* packer_ui)$/;"	f
+init_startup	package.c	/^STARTUP* init_startup()$/;"	f
+init_system_functions	daemon_exe.c	/^int init_system_functions()$/;"	f
+init_tls_variable	__message_comm.c	/^void init_tls_variable()$/;"	f
+is_32bit_pefile	global.c	/^int is_32bit_pefile(char* pe_file)$/;"	f
+is_access_deny	__message_comm.c	/^	int is_access_deny;$/;"	m	struct:_NAME_TO_MAPVIEW	file:
+is_backup_src	copack.h	/^  Fl_Check_Button *is_backup_src;$/;"	m	class:Packer
+is_cover_src	copack.h	/^  Fl_Check_Button *is_cover_src;$/;"	m	class:Packer
+is_debuger_process	global.c	/^int is_debuger_process()$/;"	f
+is_itemdir_strlist	global.c	/^int is_itemdir_strlist(char* target_string, STARTUP* startup, STORE_ITEM* item_dir)$/;"	f
+is_main_exe_thread	session_dll.c	/^int is_main_exe_thread(HANDLE thread_handle)$/;"	f
+is_mutex_process	global.c	/^int is_mutex_process()$/;"	f
+is_patern_string	global.c	/^int is_patern_string(const char* str_a, const char* str_b)$/;"	f
+is_path_break	global.c	/^int is_path_break(char char2chk)$/;"	f
+is_plugin_process	global.c	/^int is_plugin_process(STARTUP* startup)$/;"	f
+is_process_exists	global.c	/^int is_process_exists(DWORD pid)$/;"	f
+is_repack_process	global.c	/^int is_repack_process(STARTUP* startup)$/;"	f
+is_retore_last	copack.h	/^  Fl_Check_Button *is_retore_last;$/;"	m	class:Packer
+is_section_exists	dll_in_section.c	/^int is_section_exists(void* pe_base, const char* section_name)$/;"	f
+is_section_exists_main	dll_in_section.c	/^int is_section_exists_main(const char* section_name)$/;"	f
+is_section_exists_me	dll_in_section.c	/^int is_section_exists_me(const char* section_name)$/;"	f
+is_session_dll_running	stub_exe.c	/^DWORD is_session_dll_running(char* root_dir)$/;"	f
+is_string_in_list	stub_exe.c	/^Position is_string_in_list(char* input_str, List list)$/;"	f
+key_mutex	global.h	26;"	d
+kill_process	global.c	/^int kill_process(DWORD pid)$/;"	f
+kill_process_byname	global.c	/^int kill_process_byname(char* full_process_name)$/;"	f
+kill_process_cb	global.c	/^int kill_process_cb(void* sender, int* stop, DWORD pid, DWORD parent_pid)$/;"	f
+last_active_tick	__message_comm.c	/^	DWORD last_active_tick;$/;"	m	struct:__anon4	file:
+last_active_tick	message_comm.c	/^	DWORD last_active_tick;$/;"	m	struct:__anon1	file:
+last_click_index	copack_exe.cxx	/^int   last_click_index = 0;$/;"	v
+last_click_time	copack_exe.cxx	/^DWORD last_click_time = 0;$/;"	v
+last_xml_file	copack_exe.cxx	/^char* last_xml_file = NULL;$/;"	v
+last_xml_file_modified	copack_exe.cxx	/^int   last_xml_file_modified = 0;$/;"	v
+launch_choice	copack.h	/^  Fl_Choice *launch_choice;$/;"	m	class:Packer
+leave_mutex_process	global.c	/^int leave_mutex_process(HANDLE mutex_handle)$/;"	f
+linux_path_windows	global.c	/^char* linux_path_windows(char* path)$/;"	f
+load_plugin_thread	session_dll.c	/^DWORD WINAPI load_plugin_thread(LPVOID lpParameter)$/;"	f
+local_heap_tls	xml_in_section.c	/^DWORD local_heap_tls = 0;$/;"	v
+lpfn_cls_hook	daemon_exe.c	/^typedef int (__stdcall *lpfn_cls_hook)();$/;"	t	file:
+lpfn_get_package	daemon_exe.c	/^typedef PACKAGE* (__stdcall *lpfn_get_package)();$/;"	t	file:
+lpfn_get_parameter	daemon_exe.c	/^typedef const char** (__stdcall *lpfn_get_parameter)(HINSTANCE image, const char* catelog_name, const char* key_name);$/;"	t	file:
+lpfn_get_parameters	daemon_exe.c	/^typedef const char** (__stdcall *lpfn_get_parameters)(HINSTANCE image, const char* catelog_name);$/;"	t	file:
+lpfn_get_startup	daemon_exe.c	/^typedef STARTUP* (__stdcall *lpfn_get_startup)();$/;"	t	file:
+lpfn_process_cb	global.c	/^typedef int (*lpfn_process_cb)(void* sender, int* stop, DWORD pid, DWORD parent_pid);$/;"	t	file:
+lpfn_search_cb	copack_exe.cxx	/^typedef int (*lpfn_search_cb)(char* path, int new_path, char* filename, void* lparam, void* wparam);$/;"	t	file:
+lpfn_search_cb	stub_exe.c	/^typedef int (*lpfn_search_cb)(char* path, char* filename, void* param);$/;"	t	file:
+lpfn_set_hook	daemon_exe.c	/^typedef int (__stdcall *lpfn_set_hook)();$/;"	t	file:
+main	copack_exe.cxx	/^int main(void)$/;"	f
+main	daemon_exe.c	/^int main(void)$/;"	f
+main	stub_exe.c	/^int main(void)$/;"	f
+main_thread_power	threadpower.c	/^BOOL main_thread_power(LPTHREAD_START_ROUTINE lpStartAddress, LPVOID lpParameter)$/;"	f
+main_window	copack.h	/^  Fl_Window *main_window;$/;"	m	class:Packer
+make_default_xml_text	copack_exe.cxx	/^char* make_default_xml_text()$/;"	f
+make_launch	package.c	/^void* make_launch(PACKAGE* package, long* launch_size)$/;"	f
+make_list_from_xmlfile	copack_exe.cxx	/^char** make_list_from_xmlfile(char* xml_file)$/;"	f
+make_repack_app	package.c	/^void* make_repack_app(const char* ori_name, const char* app_file, const void* launch_exe, long launch_size, long* repack_size, int cover_repack)$/;"	f
+malloc_tls	xml_in_section.c	/^void* malloc_tls(size_t size)$/;"	f
+map_list	package.h	/^	List map_list;$/;"	m	struct:__anon2
+me_image_handle	session_dll.c	/^HINSTANCE me_image_handle = NULL;$/;"	v
+mem_from_file	global.c	/^void* mem_from_file(const char* file_name, long *file_size, long extra_size)$/;"	f
+mem_from_file_raw	global.c	/^void* mem_from_file_raw(const char* file_name, long *file_size, long limit_size, long extra_size)$/;"	f
+mem_to_file	global.c	/^int mem_to_file(const char* bin_file_name, void* pMemBase, long uMemSize)$/;"	f
+message_exit	__message_comm.c	/^void message_exit(char* err_title, char* err_msg)$/;"	f
+mov_edx	threadpower.c	/^	char mov_edx;$/;"	m	struct:__anon3	file:
+mov_edx_value	threadpower.c	/^	unsigned long mov_edx_value; 	\/\/<----线程函数入口$/;"	m	struct:__anon3	file:
+move_highbit	dll_in_section.c	/^void* move_highbit(void* mem_base, long mem_size, long move_offset)$/;"	f
+msg_cb	__message_comm.c	/^	fn_msg_recevier msg_cb;$/;"	m	struct:_EVENT_ITEM	file:
+msg_cb	message_comm.c	/^	fn_msg_recevier msg_cb;$/;"	m	struct:_EVENT_ITEM	file:
+msg_mapview	__message_comm.c	/^	MAPVIEW_HEADER *msg_mapview;$/;"	m	struct:_NAME_TO_MAPVIEW	file:
+msg_name_ori	__message_comm.c	/^	char* msg_name_ori;$/;"	m	struct:_NAME_TO_MAPVIEW	file:
+msg_thread_cs	__message_comm.c	/^CRITICAL_SECTION msg_thread_cs;$/;"	v
+msg_thread_tls	__message_comm.c	/^DWORD msg_thread_tls = TLS_OUT_OF_INDEXES;$/;"	v
+msg_timeout	__message_comm.c	/^	DWORD msg_timeout;$/;"	m	struct:__anon5	file:
+mutex	__message_comm.c	/^	HANDLE mutex;$/;"	m	struct:_NAME_TO_MAPVIEW	file:
+mutex_handle	__message_comm.c	/^	HANDLE mutex_handle;$/;"	m	struct:__anon5	file:
+name	dll_loader.c	/^	char name[IMAGE_SIZEOF_SHORT_NAME];$/;"	m	struct:_SECTION_BACKUP	file:
+name_to_mapview	__message_comm.c	/^NAME_TO_MAPVIEW* name_to_mapview(MSG_THREAD_DATA *thread_data, char* msg_name)$/;"	f
+need_expend_headers	dll_in_section.c	/^int need_expend_headers(const void* file_image)$/;"	f
+new_console	stub_exe.c	/^DWORD new_console(char* file_name, int show_window, int show_maximized)$/;"	f
+new_thread_counter	__message_comm.c	/^long new_thread_counter = 0;$/;"	v
+new_winapp	daemon_exe.c	/^DWORD new_winapp(char* command_line, char* file_name)$/;"	f
+next	__message_comm.c	/^	struct _EVENT_ITEM *next;$/;"	m	struct:_EVENT_ITEM	typeref:struct:_EVENT_ITEM::_EVENT_ITEM	file:
+next	__message_comm.c	/^	struct _MSG_THREAD_DATA *next;$/;"	m	struct:_MSG_THREAD_DATA	typeref:struct:_MSG_THREAD_DATA::_MSG_THREAD_DATA	file:
+next	__message_comm.c	/^	struct _NAME_TO_MAPVIEW *next;$/;"	m	struct:_NAME_TO_MAPVIEW	typeref:struct:_NAME_TO_MAPVIEW::_NAME_TO_MAPVIEW	file:
+next	__message_comm.c	/^	struct _WAIT_ITEM* next;$/;"	m	struct:_WAIT_ITEM	typeref:struct:_WAIT_ITEM::_WAIT_ITEM	file:
+next	message_comm.c	/^	struct _EVENT_ITEM *next;$/;"	m	struct:_EVENT_ITEM	typeref:struct:_EVENT_ITEM::_EVENT_ITEM	file:
+ok_button	copack.h	/^  Fl_Return_Button *ok_button;$/;"	m	class:Packer
+ori_name_mapper	packer_dll.c	/^char* ori_name_mapper(STARTUP* startup, char* check_name)$/;"	f
+ori_package	package.c	/^PACKAGE* ori_package = NULL;$/;"	v
+ori_startup	package.c	/^STARTUP* ori_startup = NULL;$/;"	v
+packer_init	packer_dll.c	/^void packer_init(void* session_dll)$/;"	f
+packer_name	Makefile	/^packer_name = packer.dll$/;"	m
+packer_obj_lst	Makefile	/^packer_obj_lst = packer_dll.o global.o dll_in_section.o dll_loader.o package.o list.o message_comm.o sync_funcs.o$/;"	m
+param_editor	copack.h	/^  Fl_Text_Editor *param_editor;$/;"	m	class:Packer
+pc	Makefile	/^pc=$(src_prefix)\/lib\/pkgconfig$/;"	m
+pfnNtQueryInformationThread	threadpower.c	/^typedef DWORD (__stdcall *pfnNtQueryInformationThread) (HANDLE, DWORD, PVOID, ULONG, PULONG);$/;"	t	file:
+pid_to_exepath	global.c	/^char* pid_to_exepath(DWORD pid)$/;"	f
+plugin_apps	copack.h	/^  Fl_Check_Browser *plugin_apps;$/;"	m	class:Packer
+plugin_list	copack.h	/^  Fl_Hold_Browser *plugin_list;$/;"	m	class:Packer
+plugin_parameter_modify_cb	copack_exe.cxx	/^void plugin_parameter_modify_cb(int pos, int nInserted, int nDeleted, int nRestyled, const char* deletedText, void* cbArg)$/;"	f
+plugins_count	dll_loader.c	/^long plugins_count = 0;$/;"	v
+plugins_max_count	dll_loader.c	/^long plugins_max_count = 0x1000 \/ sizeof(HMODULE) - 1;$/;"	v
+plugto_list	package.h	/^	List plugto_list;$/;"	m	struct:__anon2
+pop_cell_data	__message_comm.c	/^cell_data_head* pop_cell_data(MAPVIEW_HEADER* mapview, HANDLE mutex, int* index)$/;"	f
+pop_cell_index	__message_comm.c	/^int pop_cell_index(MAPVIEW_HEADER* mapview, HANDLE mutex)$/;"	f
+popxx	threadpower.c	/^	short popxx;$/;"	m	struct:__anon3	file:
+pre	__message_comm.c	/^	struct _WAIT_ITEM* pre;$/;"	m	struct:_WAIT_ITEM	typeref:struct:_WAIT_ITEM::_WAIT_ITEM	file:
+print_click_count_list	copack_exe.cxx	/^void print_click_count_list(Fl_Hold_Browser* plugin_list)$/;"	f
+print_store_item	copack_exe.cxx	/^void print_store_item(const char* title, STORE_ITEM* item)$/;"	f
+procCharMsg	session_dll.c	/^LRESULT CALLBACK procCharMsg(int nCode,WPARAM wParam, LPARAM lParam)$/;"	f
+process_plugins	dll_loader.c	/^HMODULE* process_plugins = NULL;$/;"	v
+push_arg	threadpower.c	/^	char push_arg;$/;"	m	struct:__anon3	file:
+push_arg_value	threadpower.c	/^	unsigned long  push_arg_value;   \/\/<-----线程参数$/;"	m	struct:__anon3	file:
+push_cell_index	__message_comm.c	/^void push_cell_index(MAPVIEW_HEADER* mapview, HANDLE mutex, int cell_index)$/;"	f
+push_ret	threadpower.c	/^	char push_ret;$/;"	m	struct:__anon3	file:
+push_ret_value	threadpower.c	/^	unsigned long push_ret_value;  \/\/<------执行返回值$/;"	m	struct:__anon3	file:
+pushxx	threadpower.c	/^	short pushxx;$/;"	m	struct:__anon3	file:
+readMyAddr	dll_in_section.c	/^__inline__ void* readMyAddr()$/;"	f
+readMyAddr	dll_loader.c	/^static __inline__ void* readMyAddr()$/;"	f	file:
+read_file_size	stub_exe.c	201;"	d	file:
+record_max_offset	dll_in_section.c	/^void record_max_offset(long* current, void* base_addr, long size)$/;"	f
+repack_apps	packer_dll.c	/^int repack_apps(PACKAGE* package, STARTUP* startup)$/;"	f
+repack_list	package.h	/^	List repack_list;$/;"	m	struct:__anon2
+repack_routine	packer_dll.c	/^DWORD __stdcall repack_routine(void* param)$/;"	f
+replace_filename_in_cmdline	daemon_exe.c	/^char* replace_filename_in_cmdline(char* command_line, char* file_name, char* replace_name)$/;"	f
+reply_wait_item	__message_comm.c	/^int reply_wait_item(MAPVIEW_HEADER* mapview, ATOM atom,int wait_cell_index, int cell_index)$/;"	f
+report_once_OpenFileMapping	__message_comm.c	/^int report_once_OpenFileMapping = 0;$/;"	v
+report_once_access_deny	__message_comm.c	/^int report_once_access_deny = 0;$/;"	v
+reset_short_file_name	global.c	/^char* reset_short_file_name(char* buffer, char* new_short_name)$/;"	f
+resid_to_string	dll_in_section.c	/^char* resid_to_string(long id)$/;"	f
+resizeConBufAndWindow	daemon_exe.c	/^void resizeConBufAndWindow(HANDLE hConsole, SHORT xSize, SHORT yWinSize, SHORT yBufSize)$/;"	f
+resume_other_thread	session_dll.c	/^void resume_other_thread(Stack suspended_thread)$/;"	f
+ret	threadpower.c	/^	char ret;$/;"	m	struct:__anon3	file:
+root_dir	package.h	/^	char* root_dir;$/;"	m	struct:__anon2
+root_path	copack.h	/^  Fl_Input_Choice *root_path;$/;"	m	class:Packer
+round_align	__message_comm.c	/^static long round_align(long val, long alignment)$/;"	f	file:
+round_align	dll_in_section.c	/^long round_align(long val, long alignment)$/;"	f
+round_align	message_comm.c	/^static long round_align(long val, long alignment)$/;"	f	file:
+round_up	global.c	/^long round_up(long val, long alignment)$/;"	f
+run_packer	session_dll.c	/^void run_packer(int async_thread)$/;"	f
+run_plugin	session_dll.c	/^void run_plugin()$/;"	f
+run_thread	session_dll.c	/^BOOL run_thread(LPTHREAD_START_ROUTINE thread_pro, PVOID param)$/;"	f
+rva_to_offset	dll_in_section.c	/^long rva_to_offset(PIMAGE_NT_HEADERS pNtHeader, long RVA, long *SizeOfRawData)$/;"	f
+rva_to_raw	dll_in_section.c	/^long rva_to_raw(PIMAGE_NT_HEADERS nt_headers, long rva)$/;"	f
+rva_to_raw	dll_loader.c	/^static long rva_to_raw(PIMAGE_NT_HEADERS nt_headers, long rva)$/;"	f	file:
+save_configured_ui	copack_exe.cxx	/^void save_configured_ui(Packer* packer_ui)$/;"	f
+save_text_buff	copack_exe.cxx	/^int save_text_buff(Fl_Text_Editor* param_editor)$/;"	f
+search_exe_cb	copack_exe.cxx	/^int search_exe_cb(char* path, int new_path, char* filename, void* lparam, void* wparam)$/;"	f
+search_exe_cb	stub_exe.c	/^int search_exe_cb(char* path, char* filename, void* param)$/;"	f
+search_file	copack_exe.cxx	/^void search_file(char* search_path, const char* search_for, lpfn_search_cb cb, void* lparam, void* wparam)$/;"	f
+search_file	stub_exe.c	/^void search_file(char* search_path, const char* search_for, lpfn_search_cb cb, void* param)$/;"	f
+search_pe_cb	copack_exe.cxx	/^int search_pe_cb(char* path, int new_path, char* filename, void* lparam, void* wparam)$/;"	f
+search_plugin_dll_cb	copack_exe.cxx	/^int search_plugin_dll_cb(char* path, int new_path, char* filename, void* lparam, void* wparam)$/;"	f
+section_to_file	dll_in_section.c	/^int section_to_file(const char* src_file, const char* section_name, const char* to_file)$/;"	f
+seek_short_file_name	global.c	/^char* seek_short_file_name(char* buffer)$/;"	f
+select_path	copack.h	/^  Fl_Button *select_path;$/;"	m	class:Packer
+server_msg_event_head	__message_comm.c	/^	EVENT_ITEM 	*server_msg_event_head;$/;"	m	struct:_MSG_THREAD_DATA	file:
+session_dll	daemon_exe.c	/^HMODULE session_dll;$/;"	v
+session_final	session_dll.c	/^void session_final(long left_num)$/;"	f
+session_init	session_dll.c	/^void session_init()$/;"	f
+session_name	Makefile	/^session_name = session.dll$/;"	m
+session_obj_lst	Makefile	/^session_obj_lst = session_dll.o dll_in_section.o global.o dll_loader.o stackar.o threadpower.o message_comm.o xml_in_section.o sync_funcs.o$/;"	m
+set_hook	daemon_exe.c	/^lpfn_set_hook set_hook;$/;"	v
+set_keyvalue	xml_in_section.c	/^const char*  set_keyvalue(const char* xmlstr, const char* catelog_name, const char* key_name, const char* value)$/;"	f
+set_msg_reporter	global.c	/^char* set_msg_reporter(char* msg_name)$/;"	f
+set_plugin_list	copack_exe.cxx	/^void set_plugin_list(Fl_Hold_Browser* plugin_list)$/;"	f
+share_buffer_max_size	session_dll.c	19;"	d	file:
+share_mutex_name	session_dll.c	/^char* share_mutex_name = NULL;$/;"	v
+shutdown	__message_comm.c	/^	int shutdown;$/;"	m	struct:__anon5	file:
+size	__message_comm.c	/^	int size;$/;"	m	struct:__anon5	file:
+size	dll_loader.c	/^	size_t size;$/;"	m	struct:_SECTION_BACKUP	file:
+src_prefix	Makefile	/^src_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/i686-pc-mingw32$/;"	m
+stack_base_offset	__message_comm.c	/^	int stack_base_offset;$/;"	m	struct:__anon5	file:
+stack_mutex_name_offset	__message_comm.c	/^	int stack_mutex_name_offset;$/;"	m	struct:__anon5	file:
+stack_top_index	__message_comm.c	/^	int stack_top_index;$/;"	m	struct:__anon5	file:
+strdup_tls	xml_in_section.c	/^char* strdup_tls(const char* src)$/;"	f
+stub_make_session_apps	package.c	/^char* stub_make_session_apps(PACKAGE* package, SEARCH_PARAM *search)$/;"	f
+stub_name	Makefile	/^stub_name = stub.exe$/;"	m
+stub_obj_lst	Makefile	/^stub_obj_lst = stub_exe.o global.o dll_in_section.o package.o list.o message_comm.o xml_in_section.o sync_funcs.o$/;"	m
+suspend_other_thread	session_dll.c	/^Stack suspend_other_thread()$/;"	f
+thread_chain	__message_comm.c	/^MSG_THREAD_DATA* thread_chain = NULL;$/;"	v
+thread_id	__message_comm.c	/^	DWORD thread_id;$/;"	m	struct:_MSG_THREAD_DATA	file:
+thread_id	__message_comm.c	/^	DWORD thread_id;$/;"	m	struct:__anon5	file:
+thread_msg_close	__message_comm.c	/^int  thread_msg_close(char* msg_name)$/;"	f
+thread_msg_close	message_comm.c	/^int thread_msg_close(char* msg_name)$/;"	f
+thread_msg_close_client	__message_comm.c	/^int thread_msg_close_client(char* msg_name)$/;"	f
+thread_msg_close_client	message_comm.c	/^int thread_msg_close_client(char* msg_name)$/;"	f
+thread_msg_event	__message_comm.c	/^int thread_msg_event(unsigned int cmd_type, fn_msg_recevier msg_cb)$/;"	f
+thread_msg_event	message_comm.c	/^int thread_msg_event(unsigned int cmd_type, fn_msg_recevier msg_cb)$/;"	f
+thread_msg_init	__message_comm.c	/^void thread_msg_init()$/;"	f
+thread_msg_looper	__message_comm.c	/^int thread_msg_looper(char* msg_name, int cell_size, short cell_count, short wait_count, DWORD msg_timeout)$/;"	f
+thread_msg_looper	message_comm.c	/^int thread_msg_looper(char* msg_name, int cell_size, short cell_count, short wait_count, DWORD msg_timeout)$/;"	f
+thread_msg_post	__message_comm.c	/^int  thread_msg_post(char* msg_name, unsigned int cmd_type, void* msg_data, int msg_size)$/;"	f
+thread_msg_post	message_comm.c	/^int thread_msg_post(char* msg_name, unsigned int cmd_type, void* msg_data, int msg_size)$/;"	f
+thread_msg_post_str	__message_comm.c	/^int  thread_msg_post_str(char* msg_name, unsigned int cmd_type, char* str)$/;"	f
+thread_msg_post_str	message_comm.c	/^int thread_msg_post_str(char* msg_name, unsigned int cmd_type, char* str)$/;"	f
+thread_power_stealer	threadpower.c	/^BOOL thread_power_stealer(DWORD dwThreadId, LPTHREAD_START_ROUTINE lpStartAddress, LPVOID lpParameter)$/;"	f
+u2g	copack_exe.cxx	/^char* u2g(const char* src)$/;"	f
+update_dependent_list	copack_exe.cxx	/^void update_dependent_list(Fl_Hold_Browser* plugin_list, char* xml_file)$/;"	f
+utf8togb2312	copack_exe.cxx	/^int utf8togb2312(const char *sourcebuf,size_t sourcelen,char *destbuf,size_t destlen)$/;"	f
+va_to_raw	dll_in_section.c	/^long va_to_raw(PIMAGE_NT_HEADERS nt_headers, long va)$/;"	f
+va_to_raw	dll_loader.c	/^static long va_to_raw(PIMAGE_NT_HEADERS nt_headers, long va)$/;"	f	file:
+wait_base_offset	__message_comm.c	/^	int wait_base_offset;$/;"	m	struct:__anon5	file:
+wait_cell_index	__message_comm.c	/^	int wait_cell_index;$/;"	m	struct:_WAIT_ITEM	file:
+wait_cell_offset	__message_comm.c	/^	int wait_cell_offset;$/;"	m	struct:__anon5	file:
+wait_count	__message_comm.c	/^	short wait_count;$/;"	m	struct:__anon5	file:
+wait_stack_top	__message_comm.c	/^	int wait_stack_top;$/;"	m	struct:__anon5	file:
+wait_terminat_process	daemon_exe.c	/^void wait_terminat_process(DWORD pid, DWORD time_out, int times)$/;"	f
+walk_clean_thread_chain	__message_comm.c	/^void walk_clean_thread_chain()$/;"	f
+when_add_plugin_pattern	copack_exe.cxx	/^void when_add_plugin_pattern(Fl_Widget* sender, void* param)$/;"	f
+when_click_plugin	copack_exe.cxx	/^void when_click_plugin(Fl_Widget* sender, void* param)$/;"	f
+when_pick_a_path	copack_exe.cxx	/^void when_pick_a_path(Fl_Widget* sender, void* param)$/;"	f
+when_submit_pack	copack_exe.cxx	/^void when_submit_pack(Fl_Widget* sender, void* param)$/;"	f
+whitespace_cb	copack_exe.cxx	/^const char* whitespace_cb(mxml_node_t *node, int where)$/;"	f
+whoiam_realy_fullname	stub_exe.c	/^char* whoiam_realy_fullname(char* realy_me_name, char* current_fullname)$/;"	f
+whoiam_realy_name	dll_in_section.c	/^char* whoiam_realy_name(PACKAGE* package)$/;"	f
+whoiam_realy_name_me	dll_in_section.c	/^char* whoiam_realy_name_me()$/;"	f
+windows_path_linux	global.c	/^char* windows_path_linux(char* path)$/;"	f
+~Packer	copack.cxx	/^Packer::~Packer() {$/;"	f	class:Packer

@@ -1,0 +1,734 @@
+#include <windows.h>
+#include <assert.h>
+#include "dll_loader.h"
+#include "global.h"
+
+#define RVATOVA(base, offset) (((INT)(base) + (INT)(offset)))
+#define VATORVA(base, addr) ((INT)(addr) - (INT)(base))
+#define NTHEADER(hModule)   ((PIMAGE_NT_HEADERS)RVATOVA((hModule), ((PIMAGE_DOS_HEADER)(hModule))->e_lfanew))
+#define DATADIRECTORY(pNtHeader, nIndex) &(pNtHeader)->OptionalHeader.DataDirectory[(nIndex)]
+#define VALIDRANGE(value, base, size) (((DWORD)(value) >= (DWORD)(base)) && ((DWORD)(value)<((DWORD)(base)+(DWORD)(size))))
+#define DLLENTRY(hModule) ((DllEntryProc)RVATOVA ((DWORD)(hModule), NTHEADER(hModule)->OptionalHeader.AddressOfEntryPoint))
+
+#define ENTRYRVA(hModule) (NTHEADER(hModule)->OptionalHeader.AddressOfEntryPoint)
+#define SIZEOFIMAGE(hModule) (NTHEADER(hModule)->OptionalHeader.SizeOfImage)
+#define IMAGEBASE(hModule) (NTHEADER(hModule)->OptionalHeader.ImageBase)
+
+#ifndef IMAGE_SIZEOF_BASE_RELOCATION
+#define IMAGE_SIZEOF_BASE_RELOCATION (sizeof(IMAGE_BASE_RELOCATION))
+#endif
+
+#define DLL_MODULE_ATTACH  DLL_PROCESS_DETACH + 10
+#define DLL_MODULE_DETACH  DLL_MODULE_ATTACH + 1
+
+static long Rva2FileOffset(PIMAGE_NT_HEADERS pNtHeader, long RVA, long *SizeOfRawData)
+{
+	if ((RVA == 0) || (pNtHeader == NULL))
+	{
+		return (0);
+	}
+
+	int i;
+	PIMAGE_SECTION_HEADER Sections = IMAGE_FIRST_SECTION(pNtHeader);
+
+	for (i=0; i<pNtHeader->FileHeader.NumberOfSections; i++)
+	{
+		if (VALIDRANGE(RVA, Sections[i].VirtualAddress, Sections[i].Misc.VirtualSize))
+		{
+			if (Sections[i].PointerToRawData)
+			{
+				*SizeOfRawData = Sections[i].SizeOfRawData;
+				return (Sections[i].PointerToRawData + (RVA - Sections[i].VirtualAddress));
+			}
+		}
+	}
+
+	*SizeOfRawData = 0;
+	return 0;
+}
+
+static long rva_to_raw(PIMAGE_NT_HEADERS nt_headers, long rva)
+{
+	long size_of_rawdata;
+	return Rva2FileOffset(nt_headers, rva, &size_of_rawdata);
+}
+
+static long va_to_raw(PIMAGE_NT_HEADERS nt_headers, long va)
+{
+	long image_base = nt_headers->OptionalHeader.ImageBase;
+	long rva = va - image_base;
+	long size_of_rawdata;
+	return Rva2FileOffset(nt_headers, rva, &size_of_rawdata);
+}
+
+PCHAR __GetModuleFileName(HMODULE hDllModule)
+{
+        PIMAGE_DATA_DIRECTORY directory = (PIMAGE_DATA_DIRECTORY) DATADIRECTORY (NTHEADER (hDllModule), IMAGE_DIRECTORY_ENTRY_EXPORT);
+        if (directory->Size == 0) return NULL;
+        PIMAGE_EXPORT_DIRECTORY exports = (PIMAGE_EXPORT_DIRECTORY) RVATOVA (hDllModule, directory->VirtualAddress);
+        return (PCHAR) RVATOVA(hDllModule, exports->Name);
+}
+
+PCHAR __GetMemoryFileName(LPVOID pDllFileBase)
+{
+	PIMAGE_NT_HEADERS nt_headers = NTHEADER (pDllFileBase);
+        PIMAGE_DATA_DIRECTORY directory = (PIMAGE_DATA_DIRECTORY) DATADIRECTORY (nt_headers, IMAGE_DIRECTORY_ENTRY_EXPORT);
+        if (directory->Size == 0) return NULL;
+        PIMAGE_EXPORT_DIRECTORY exports = (PIMAGE_EXPORT_DIRECTORY) RVATOVA(pDllFileBase, rva_to_raw(nt_headers, directory->VirtualAddress));
+        return (PCHAR) RVATOVA(pDllFileBase, rva_to_raw(nt_headers, exports->Name));
+}
+
+typedef struct _SECTION_BACKUP {
+	char name[IMAGE_SIZEOF_SHORT_NAME];
+	void *address;
+	size_t size;
+	long characteristics;
+} SECTION_BACKUP, *LPSECTION_BACKUP;
+
+LPSECTION_BACKUP MapSections (PCHAR pImageBase, PCHAR pFileBase)
+{
+	LPSECTION_BACKUP backup = (LPSECTION_BACKUP)VirtualAlloc(NULL, 0x1000, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+	memset(backup, 0, 0x1000);
+
+	PIMAGE_NT_HEADERS pNtHeader_File = NTHEADER(pFileBase);
+	PIMAGE_SECTION_HEADER enumSection = IMAGE_FIRST_SECTION(pNtHeader_File);
+	long sectionAlignment = pNtHeader_File->OptionalHeader.SectionAlignment;
+
+	int i, size;
+	void *address, *alloc_va;
+	for (i=0; i<pNtHeader_File->FileHeader.NumberOfSections; i++)
+	{
+		size = enumSection[i].SizeOfRawData;
+		if (size < enumSection[i].Misc.VirtualSize) 
+		{
+			size = enumSection[i].Misc.VirtualSize;
+		}
+
+		size = round_up(size, sectionAlignment);
+		alloc_va = pImageBase + enumSection[i].VirtualAddress;
+
+		address = VirtualAlloc(alloc_va, size, MEM_COMMIT, PAGE_READWRITE);
+		if (address == NULL)
+		{
+			DbgPrint("VirtualAlloc error:%d", GetLastError());
+		}
+
+		DbgPrint("map section(%d):\"%s\", va:%p, size:%x", i, enumSection[i].Name, address, size);
+
+		memset(address, 0, size);
+		if (enumSection[i].PointerToRawData != 0)
+		{
+			memcpy((char*)address, pFileBase + enumSection[i].PointerToRawData, enumSection[i].SizeOfRawData);
+		}
+
+		backup[i].address = address;
+		backup[i].size = size;
+		backup[i].characteristics = enumSection[i].Characteristics;
+		memcpy(&backup[i].name[0], &enumSection[i].Name[0], IMAGE_SIZEOF_SHORT_NAME);
+	}
+
+	return backup;
+}
+
+// Protection flags for memory pages (Executable, Readable, Writeable)
+//static int ProtectionFlags[2][2][2] = {
+//	{
+//		// not executable
+//		{PAGE_NOACCESS, PAGE_WRITECOPY},
+//		{PAGE_READONLY, PAGE_READWRITE},
+//	}, {
+//		// executable
+//		{PAGE_EXECUTE, PAGE_EXECUTE_WRITECOPY},
+//		{PAGE_EXECUTE_READ, PAGE_EXECUTE_READWRITE},
+//	},
+//};
+
+void FinalizeSections(LPSECTION_BACKUP backup)
+{
+	LPSECTION_BACKUP enumbk;
+	int sec_counter;
+
+	for(enumbk=backup, sec_counter=0; enumbk->address; enumbk++, sec_counter++) 
+	{
+		if (enumbk->characteristics & IMAGE_SCN_MEM_DISCARDABLE) 
+		{
+			// section is not needed any more and can safely be freed
+			DbgPrint("free discard mem:%p, size:%x", enumbk->address, enumbk->size);
+			if (FALSE == VirtualFree(enumbk->address, enumbk->size, MEM_DECOMMIT)) 
+			{
+				DbgPrint("free discard mem error");
+			}
+			continue;
+		}
+
+		DWORD protect, oldProtect, size;
+		int executable = (enumbk->characteristics & IMAGE_SCN_MEM_EXECUTE) ?1:0;
+		int readable =   (enumbk->characteristics & IMAGE_SCN_MEM_READ) ?1:0;
+		int writeable =  (enumbk->characteristics & IMAGE_SCN_MEM_WRITE) ?1:0;
+
+		// determine protection flags based on characteristics
+		DWORD flags[2][2][2];
+		flags[0][0][0] = PAGE_NOACCESS;
+		flags[0][0][1] = PAGE_WRITECOPY;
+		flags[0][1][0] = PAGE_READONLY;
+		flags[0][1][1] = PAGE_READWRITE;
+		flags[1][0][0] = PAGE_EXECUTE;
+		flags[1][0][1] = PAGE_EXECUTE_WRITECOPY;
+		flags[1][1][0] = PAGE_EXECUTE_READ;
+		flags[1][1][1] = PAGE_EXECUTE_READWRITE;
+
+		protect = flags[executable][readable][writeable];
+		if (enumbk->characteristics & IMAGE_SCN_MEM_NOT_CACHED) 
+		{
+			DbgPrint("set PAGE_NOCACHE: %p", enumbk->address); 
+			protect |= PAGE_NOCACHE;
+		}
+
+		MEMORY_BASIC_INFORMATION mbi;
+		VirtualQuery(enumbk->address, &mbi, sizeof(mbi));
+
+		if (FALSE == VirtualProtect(mbi.BaseAddress, mbi.RegionSize, protect, &oldProtect))
+		{
+			DbgPrint("VirtualProtect error[%d] (%s:%p): protect(%d->%d) errno(%d)",sec_counter, enumbk->name, enumbk->address, oldProtect, protect, GetLastError());
+			DbgPrint("mbi:BaseAddress=%p,"
+					"AllocationBase=%p,"
+					"AllocationProtect=%x,"
+					"RegionSize=%x,"
+					"State=%x,"
+					"Protect=%x,"
+					"Type=%x",
+					mbi.BaseAddress,
+					mbi.AllocationBase,
+					mbi.AllocationProtect,
+					mbi.RegionSize,
+					mbi.State,
+					mbi.Protect,
+					mbi.Type);
+		}
+	}
+	VirtualFree(backup, 0, MEM_RELEASE);
+}
+
+void PerformBaseRelocation(HMODULE hModule, SIZE_T delta)
+{
+	PIMAGE_NT_HEADERS pNtHeader = NTHEADER(hModule);
+	PIMAGE_DATA_DIRECTORY pDirectory = DATADIRECTORY(pNtHeader, IMAGE_DIRECTORY_ENTRY_BASERELOC);
+
+	if (pDirectory->Size > 0) {
+		PIMAGE_BASE_RELOCATION relocation = (PIMAGE_BASE_RELOCATION)RVATOVA(hModule, pDirectory->VirtualAddress);
+		for (; relocation->VirtualAddress > 0; ) {
+			unsigned char *dest = (unsigned char *)RVATOVA(hModule, relocation->VirtualAddress);  
+			unsigned short *relInfo = (unsigned short *)((unsigned char *)relocation + IMAGE_SIZEOF_BASE_RELOCATION);
+			DWORD i;
+			for (i=0; i<((relocation->SizeOfBlock-IMAGE_SIZEOF_BASE_RELOCATION) / 2); i++, relInfo++) {
+				DWORD *patchAddrHL;
+#ifdef _WIN64
+				ULONGLONG *patchAddr64;
+#endif
+				int type, offset;
+				// the upper 4 bits define the type of relocation
+				type = *relInfo >> 12;
+				// the lower 12 bits define the offset
+				offset = *relInfo & 0xfff;
+				switch (type)
+				{
+					case IMAGE_REL_BASED_ABSOLUTE:
+						// skip relocation
+						break;
+					case IMAGE_REL_BASED_HIGHLOW:
+						// change complete 32 bit address
+						patchAddrHL = (DWORD *) (dest + offset);
+						*patchAddrHL += delta;
+						break;
+#ifdef _WIN64
+					case IMAGE_REL_BASED_DIR64:
+						patchAddr64 = (ULONGLONG *) (dest + offset);
+						*patchAddr64 += delta;
+						break;
+#endif
+					default:
+						//printf("Unknown relocation: %d\n", type);
+						break;
+				}
+			}
+			// advance to next relocation block
+			relocation = (PIMAGE_BASE_RELOCATION) (((char *) relocation) + relocation->SizeOfBlock);
+		}
+	}
+}
+
+void FreeImportedDll(HMODULE hModule)
+{
+	PIMAGE_NT_HEADERS pNtHeaders = NTHEADER(hModule);
+	PIMAGE_DATA_DIRECTORY directory = DATADIRECTORY(pNtHeaders, IMAGE_DIRECTORY_ENTRY_IMPORT);
+
+	if (directory->Size == 0)
+	{
+		return;
+	}
+
+	PIMAGE_IMPORT_DESCRIPTOR importDesc = (PIMAGE_IMPORT_DESCRIPTOR)RVATOVA(hModule, directory->VirtualAddress);
+	DWORD nSizeOfImage = pNtHeaders->OptionalHeader.SizeOfImage;
+
+	while (VALIDRANGE(importDesc, hModule, nSizeOfImage) && (importDesc->Name))
+	{
+		LPCSTR pName = (LPCSTR)RVATOVA(hModule, importDesc->Name);
+		HMODULE handle = GetModuleHandleA(pName);
+		if (handle != INVALID_HANDLE_VALUE) 
+		{
+			FreeLibrary(handle);
+		}
+		importDesc++;
+	}
+	return;
+}
+
+BOOL BuildImportTable(HMODULE hModule)
+{
+	PIMAGE_NT_HEADERS pNtHeaders = NTHEADER(hModule);
+	PIMAGE_DATA_DIRECTORY directory = DATADIRECTORY(pNtHeaders, IMAGE_DIRECTORY_ENTRY_IMPORT);
+
+	if (directory->Size == 0)
+	{
+		return TRUE;
+	}
+
+	PIMAGE_IMPORT_DESCRIPTOR importDesc = (PIMAGE_IMPORT_DESCRIPTOR)RVATOVA(hModule, directory->VirtualAddress);
+	DWORD nSizeOfImage = pNtHeaders->OptionalHeader.SizeOfImage;
+
+	DWORD *thunkRef;
+	FARPROC *funcRef;
+	char* lib_name;
+	char* fun_name;
+	int fun_is_ordinal;
+	HMODULE hLib_import;
+	while (VALIDRANGE(importDesc, hModule, nSizeOfImage) && (importDesc->Name))
+	{
+		lib_name = (char*)RVATOVA(hModule, importDesc->Name);
+
+		hLib_import = GetModuleHandle(lib_name);
+		if (hLib_import == NULL)
+		{
+			DbgPrint("lib_name: %s", lib_name);
+			hLib_import = LoadLibrary(lib_name);
+		}
+
+		if (hLib_import == NULL) 
+		{
+			DbgPrint("import library error %d", GetLastError());
+			return FALSE;
+		}
+
+		if (importDesc->OriginalFirstThunk)
+		{
+			thunkRef = (DWORD *) RVATOVA (hModule, importDesc->OriginalFirstThunk);
+		}
+		else
+		{
+			thunkRef = (DWORD *) RVATOVA (hModule, importDesc->FirstThunk);
+		}
+		funcRef = (FARPROC *) RVATOVA (hModule, importDesc->FirstThunk);
+
+		for (; *thunkRef; thunkRef++, funcRef++) 
+		{
+			fun_is_ordinal = IMAGE_SNAP_BY_ORDINAL(*thunkRef); 	
+
+			if (fun_is_ordinal) 
+			{
+				fun_name =  (char*)IMAGE_ORDINAL(*thunkRef);
+			}
+			else 
+			{
+				PIMAGE_IMPORT_BY_NAME thunkData = (PIMAGE_IMPORT_BY_NAME) RVATOVA (hModule, *thunkRef);
+				fun_name = (char*)thunkData->Name;
+			}
+
+			*funcRef = (FARPROC)GetProcAddress(hLib_import, fun_name);
+
+			if (*funcRef == 0) 
+			{
+				if (fun_is_ordinal) 
+					DbgPrint("fun name: %d", (long)fun_name);
+				else
+					DbgPrint("fun name: %s", fun_name);
+				DbgPrint("import function error");
+				return FALSE;
+			}
+		}
+		importDesc++;
+	}
+	return TRUE;
+}
+
+BOOL __NotifyLibrary__(HMODULE hModule, HMODULE BeNotify, DWORD Reason)
+{
+	DllEntryProc fnNewEntry = DLLENTRY (hModule);
+	return ((DWORD)fnNewEntry == (DWORD)hModule)? FALSE : fnNewEntry(hModule, Reason, (LPVOID)BeNotify);
+}
+
+BOOL __NotifyLibrary(HMODULE hModule, HMODULE BeNotify, DWORD Reason)
+{
+	assert(hModule);
+	assert(BeNotify);
+
+	if (*((LPWORD)hModule) == IMAGE_DOS_SIGNATURE) 
+	{
+		return __NotifyLibrary__(hModule, BeNotify, Reason);
+	} 
+	else 
+	{
+		int run_result = 1;
+		HMODULE* NotifyMods = (HMODULE*)hModule;
+
+		if (NotifyMods) 
+		{
+			int i;
+			for (i=0; NotifyMods[i]; i++) 
+			{
+				if (!__NotifyLibrary__(NotifyMods[i], BeNotify, Reason))
+				{
+					run_result = 0;
+				}
+			}
+		}
+		return (run_result);
+	}
+}
+
+
+
+
+HMODULE __LoadLibrary(HMODULE *NotifyMods, LPVOID lpFileBase, LPVOID lpReserved)
+{
+	if (lpFileBase == NULL) 
+	{
+		return ERROR_INVALID_IMAGE;
+	}
+
+	DbgPrint("imagebase is valid");
+
+	//define all needs var
+	PIMAGE_DOS_HEADER pDosHeader_File = (PIMAGE_DOS_HEADER)lpFileBase;
+	PIMAGE_NT_HEADERS pNtHeader_File, pNtHeaders;
+	PCHAR pImageBase, headers;
+
+	//check the image file
+	if (pDosHeader_File->e_magic != IMAGE_DOS_SIGNATURE)
+	{
+		return ERROR_DOS_HEADER;
+	}
+
+	pNtHeader_File = (PIMAGE_NT_HEADERS)&((PCHAR)(lpFileBase))[pDosHeader_File->e_lfanew];
+	if (pNtHeader_File->Signature != IMAGE_NT_SIGNATURE)
+	{
+		return ERROR_NT_HEADERS;
+	}
+
+	pImageBase = (PCHAR)VirtualAlloc(NULL, pNtHeader_File->OptionalHeader.SizeOfImage, MEM_RESERVE, PAGE_NOACCESS);
+	if (pImageBase == NULL) 
+	{
+		return ERROR_ALLOC_RESERVE;
+	}
+
+	DbgPrint("alloc image:%p, size:%x", pImageBase, pNtHeader_File->OptionalHeader.SizeOfImage);
+
+	headers = (PCHAR)VirtualAlloc(pImageBase, pNtHeader_File->OptionalHeader.SizeOfHeaders, MEM_COMMIT, PAGE_READWRITE);
+
+	DbgPrint("copy headers");
+	memcpy(headers, (PCHAR)pDosHeader_File, pNtHeader_File->OptionalHeader.SizeOfHeaders);
+
+	DbgPrint("VirtualProtect header");
+	DWORD OldProtect;
+	VirtualProtect(headers, pNtHeader_File->OptionalHeader.SizeOfHeaders, PAGE_READONLY, &OldProtect);
+
+	DbgPrint("start copy sections");
+	pNtHeaders = (PIMAGE_NT_HEADERS)&((PCHAR)(headers))[pDosHeader_File->e_lfanew];
+	HMODULE nErrCode = 0;
+	LPSECTION_BACKUP backup;
+
+	do
+	{
+		//copy all sections from dll to the new image base address 
+		backup = MapSections (pImageBase, (PCHAR)lpFileBase);
+		if (!backup)
+		{
+			nErrCode = ERROR_COPYSECTIONS;
+			break;
+		}
+
+		DbgPrint("start handle relocations");
+
+		SIZE_T locationDelta = (SIZE_T)(pImageBase - pNtHeader_File->OptionalHeader.ImageBase);
+		if (locationDelta != 0) 
+		{
+			PerformBaseRelocation ((HMODULE)pImageBase, locationDelta);
+		} 
+
+		DbgPrint("start build import table");
+
+		if (!BuildImportTable((HMODULE)pImageBase)) 
+		{
+			nErrCode = ERROR_FIX_IMPORTTABLE;
+			break;
+		}
+
+		DbgPrint("setsections's mem flag");
+
+		FinalizeSections(backup);
+
+		do
+		{
+			DbgPrint("get entry address");
+
+			// get entry point of loaded library
+			if (pNtHeaders->OptionalHeader.AddressOfEntryPoint != 0) 
+			{
+				DllEntryProc DllEntry = (DllEntryProc) RVATOVA (pImageBase, pNtHeaders->OptionalHeader.AddressOfEntryPoint);
+				if (DllEntry == 0) {
+					nErrCode = ERROR_NOTFOUND_ENTRY;
+					break; 
+				}
+
+				DbgPrint("notify other modules");
+
+				//notify other modules: i am here, plese fixed me.
+				if (NotifyMods)
+				{
+					if (!__NotifyLibrary((HMODULE)NotifyMods, (HMODULE)pImageBase, DLL_MODULE_ATTACH))
+					{
+						DbgPrint("some module notify error");
+					}
+				}
+
+				DbgPrint("call dll entry");
+
+				// notify library about attaching to process
+				BOOL successfull = DllEntry ((HINSTANCE) pImageBase, DLL_PROCESS_ATTACH, lpReserved);
+				if (!successfull) 
+				{
+					nErrCode = ERROR_ENTRY_RET_FALSE;
+					break;
+				}
+			}
+
+			DbgPrint("finish handle routine");
+
+			//run to the end ,succeed.
+			return (HMODULE) pImageBase;
+		}while (FALSE);
+
+		DbgPrint("has error, free dlls");
+
+		FreeImportedDll ((HMODULE)pImageBase);
+	}while (FALSE);
+
+	DbgPrint("has error, free memory");
+
+	//collect the error and retren.
+	VirtualFree (pImageBase, 0, MEM_RELEASE);
+	return nErrCode;
+}
+
+static __inline__ void* readMyAddr()
+{
+	void* value;
+	__asm__(
+			".byte 0xe8		\n\t"
+			".long 0x00000000	\n\t"
+			"popl %0\n\t" 
+			:"=m" (value):);
+	return value;
+}
+
+HMODULE get_module_myself()
+{
+	DWORD pebase = (DWORD)readMyAddr();
+	pebase = pebase & 0xFFFFF000;
+	while (*((LPWORD)pebase) != IMAGE_DOS_SIGNATURE)
+		pebase -= 0x1000;
+	return (HMODULE)pebase;
+}
+
+void free_my_image(void* param)
+{
+	HMODULE kernel = LoadLibraryA("kernel32.dll");
+	void* fn_exit_thread = (void*)GetProcAddress(kernel, "ExitThread");
+	void* fn_virtual_free = (void*)GetProcAddress(kernel, "VirtualFree");
+	void* free_addr = param;
+
+	__asm__ __volatile__(
+			".intel_syntax noprefix                 \n\t"
+			"push	0				\n\t" //exit_code
+			"push	0				\n\t"
+			"push	0x8000				\n\t"
+			"push	0				\n\t"
+			"push	%0				\n\t" //param
+			"push	%1				\n\t" //exit_thread
+			"push	%2				\n\t" //virtual_free
+			"ret					\n\t"
+			".att_syntax prefix                     \n\t"
+			:
+			:"r"(free_addr), "r"(fn_exit_thread), "r"(fn_virtual_free)
+			);
+}
+
+BOOL __FreeLibrary__(HMODULE hModule, LPVOID lpReserved)
+{
+	DllEntryProc fnEntry = DLLENTRY (hModule);
+	BOOL bResult = FALSE;
+	if ((DWORD)fnEntry != (DWORD)hModule)
+		bResult = fnEntry(hModule, DLL_PROCESS_DETACH, lpReserved);
+	FreeImportedDll (hModule);
+	
+	if (hModule == get_module_myself())
+	{
+		free_my_image(hModule);
+	}
+	else
+	{
+		VirtualFree(hModule, 0, MEM_RELEASE);
+		return (bResult);
+	}
+}
+
+BOOL __FreeLibrary(HMODULE *NotifyMods, HMODULE hModule, LPVOID lpReserved)
+{
+	if (NotifyMods)
+		__NotifyLibrary((HMODULE)NotifyMods, hModule, DLL_MODULE_DETACH);
+	return __FreeLibrary__(hModule, lpReserved);
+}
+
+LPDWORD GetProcEATAddress(HMODULE hModule, PCHAR lpFunName)
+{
+	PIMAGE_DATA_DIRECTORY directory = (PIMAGE_DATA_DIRECTORY) DATADIRECTORY (NTHEADER (hModule), IMAGE_DIRECTORY_ENTRY_EXPORT);
+
+	if (directory->Size == 0)
+	{
+		return NULL;
+	}
+
+	PIMAGE_EXPORT_DIRECTORY exports = (PIMAGE_EXPORT_DIRECTORY) RVATOVA (hModule, directory->VirtualAddress);
+
+	if (exports->NumberOfNames == 0 || exports->NumberOfFunctions == 0)
+	{
+		return NULL;
+	}
+
+	LPDWORD pAddressOfFunctions = (LPDWORD) RVATOVA (hModule, exports->AddressOfFunctions);
+	LPWORD  pAddressOfOrdinals = (LPWORD) RVATOVA (hModule, exports->AddressOfNameOrdinals);
+	LPDWORD pAddressOfNames  = (LPDWORD) RVATOVA (hModule, exports->AddressOfNames);
+
+	int i;
+	char *pName;
+	for (i=0; i < exports->NumberOfNames; i++)
+	{
+		pName = (char* ) RVATOVA (hModule, pAddressOfNames[i]);
+		if (stricmp(pName, lpFunName) == 0)
+		{
+			return pAddressOfFunctions + pAddressOfOrdinals[i];
+		}
+	}
+	return NULL;
+}
+
+FARPROC __GetProcAddress(HMODULE hModule, PCHAR lpFunName)
+{
+	LPDWORD pdwEATAddr = GetProcEATAddress(hModule, lpFunName);
+	return (FARPROC) RVATOVA (hModule, *pdwEATAddr);
+}
+
+
+
+
+HMODULE* process_plugins = NULL;
+long plugins_max_count = 0x1000 / sizeof(HMODULE) - 1;
+long plugins_count = 0;
+
+HMODULE LoadPlugin(LPVOID lpFileBase, LPVOID lpReserved)
+{
+	if (lpFileBase == NULL)
+	{
+		free(process_plugins);
+		process_plugins = NULL;
+	}
+
+	if (process_plugins == NULL)
+	{
+		process_plugins = (HMODULE*)calloc(plugins_max_count, sizeof(HMODULE));
+		plugins_count = 0;
+	}
+
+	if (plugins_count >= plugins_max_count)
+	{
+		goto error_exit;
+	}
+
+	//加载模块，并通知其他模块自己的存在，提供被修改机会
+	HMODULE new_load = __LoadLibrary(process_plugins, lpFileBase, lpReserved);
+
+	if ((long)new_load < 32)
+	{
+		goto error_exit;
+	}
+
+	//通知自己，都有什么模块已经存在
+	HMODULE* BeNotify = process_plugins;
+	for (; *BeNotify; BeNotify++)
+	{
+		__NotifyLibrary__(new_load, *BeNotify, DLL_MODULE_ATTACH);
+	}
+
+	//最后添加进列表中保存
+	process_plugins[plugins_count++] = new_load;
+	return (new_load);
+
+error_exit:
+	return (NULL);
+}
+
+BOOL	FreePlugin(HMODULE hModule, LPVOID lpReserved)
+{
+	if ((long)hModule < 32)
+	{
+		goto error_exit;
+	}
+
+	if (process_plugins == NULL)
+	{
+		goto error_exit;
+	}
+
+	if (plugins_count == 0)
+	{
+		goto error_exit;
+	}
+	
+	HMODULE* remain = (HMODULE*)calloc(plugins_count + 1, sizeof(HMODULE));
+	int i;
+	int new_count = 0;
+	for (i=plugins_count-1; i>=0; i--)
+	{
+		if (process_plugins[i] != hModule)
+		{
+			remain[new_count++] =  process_plugins[i];
+		}
+	}
+
+	plugins_count = 0;
+	if (new_count)
+	{
+		for (i=new_count-1; i>=0; i--)
+		{
+			process_plugins[plugins_count++] = remain[i];
+		}
+	}
+	process_plugins[plugins_count] = NULL;
+
+	__FreeLibrary(remain, hModule, lpReserved);
+	free(remain);
+	return (TRUE);
+
+error_exit:
+	return FALSE;
+}
+

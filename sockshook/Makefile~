@@ -1,0 +1,31 @@
+
+
+# This is an Makefile for the programs M-TREE
+Objects_project = common.o parser.o SocksHook.o
+
+CC = i586-mingw32msvc-gcc
+CLINKER = i586-mingw32msvc-gcc
+CFLAGS = -I/usr/i586-mingw32msvc/include -shared -lwsock32
+LINK =
+
+MAKE = make --no-print-directory
+SHELL = /bin/sh
+
+### End User configurable options ###
+
+LIBS =
+EXECS = SocksHook.dll
+output_name = outexec
+
+default: $(output_name)
+
+$(output_name): $(Objects_project)
+	$(CLINKER) $(LINK) -o $(output_name) $(Objects_mtree) $(LIBS)
+
+clean:
+	rm -f *.o $(EXECS)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+.SUFFIXES: .c

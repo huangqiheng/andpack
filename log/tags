@@ -1,0 +1,71 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	./Makefile	/^CC = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+CFLAGS	./Makefile	/^CFLAGS = -I$(src_prefix)\/include -Os$/;"	m
+DATADIRECTORY	./logclient.c	9;"	d	file:
+DLL_MODULE_ATTACH	./log.c	226;"	d	file:
+DLL_MODULE_DETACH	./log.c	227;"	d	file:
+DllMain	./log.c	/^BOOL WINAPI DllMain (HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpReserved)$/;"	f
+EXECS	./Makefile	/^EXECS = log.dll$/;"	m
+LD	./Makefile	/^LD = $(bin_prefix)\/i686-pc-mingw32-gcc$/;"	m
+LDFLAGS	./Makefile	/^LDFLAGS = -L$(src_prefix)\/lib -s$/;"	m
+LIBOUT	./Makefile	/^LIBOUT = ..\/bin\/plugin$/;"	m
+LIBS	./Makefile	/^LIBS = -shared$/;"	m
+MAKE	./Makefile	/^MAKE = make --no-print-directory$/;"	m
+MSGDEBUG	./log.h	23;"	d
+MSGDEBUG	./logclient.h	8;"	d
+MSGERR	./log.h	20;"	d
+MSGERR	./logclient.h	5;"	d
+MSGNONE	./log.h	19;"	d
+MSGNONE	./logclient.h	4;"	d
+MSGNOTICE	./log.h	22;"	d
+MSGNOTICE	./logclient.h	7;"	d
+MSGWARN	./log.h	21;"	d
+MSGWARN	./logclient.h	6;"	d
+NTHEADER	./logclient.c	8;"	d	file:
+RVATOVA	./logclient.c	7;"	d	file:
+SHELL	./Makefile	/^SHELL = \/bin\/sh$/;"	m
+VIEW_METHOD	./log.h	/^enum VIEW_METHOD$/;"	g
+_COMMON_H	./log.h	4;"	d
+_GetModuleName	./logclient.c	/^PCHAR _GetModuleName(HMODULE hModule)$/;"	f
+__GetModuleName	./logclient.c	/^PCHAR __GetModuleName()$/;"	f
+__LOG_CLIENT_H_ONCE	./logclient.h	2;"	d
+__inline__	./logclient.c	18;"	d	file:
+__vshow_msg	./logclient.c	/^fnlp_vshow_msg __vshow_msg = NULL;$/;"	v
+_show_msg	./log.c	/^void __stdcall _show_msg(char *modname, int level, const char *msg)$/;"	f
+bin_prefix	./Makefile	/^bin_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/bin$/;"	m
+fnlp_vshow_msg	./logclient.c	/^typedef void (*fnlp_vshow_msg)(char*, int, const char*, va_list);$/;"	t	file:
+get_file_name	./log.c	/^char* get_file_name(char* ori_full_name, char* name_replaced, char* ext_replaced)$/;"	f
+get_filename_byext	./log.c	/^char* get_filename_byext(char* ext_replaced)$/;"	f
+get_filename_bypath	./log.c	/^char* get_filename_bypath(char* name_replaced, char* ext_replaced)$/;"	f
+getset_log_option	./log.c	/^int getset_log_option(int log_level) {$/;"	f
+hlog	./logclient.c	/^HMODULE hlog;$/;"	v
+log_dll_error	./logclient.c	/^int log_dll_error = 0;$/;"	v
+log_hex	./logclient.c	/^void log_hex(int level, char* title, void *p, int len)$/;"	f
+log_hex_block	./logclient.c	/^void log_hex_block(int level, char* title, char* membase, long memsize)$/;"	f
+log_modname	./logclient.c	/^char *log_modname = NULL;$/;"	v
+logfile	./log.c	/^FILE *logfile = NULL;     \/* File to which messages should be logged *\/$/;"	v
+logfilename	./log.c	/^char logfilename[256];    \/* Name of file to which log messages should$/;"	v
+loglevel	./log.c	/^int loglevel = MSGERR;    \/* The default logging level is to only log$/;"	v
+logmsg	./logclient.c	/^void logmsg(int level, const char *fmt, ...)$/;"	f
+logstamp	./log.c	/^int logstamp = 0;         \/* Timestamp (and pid stamp) messages *\/$/;"	v
+me_modulename	./log.c	/^char *me_modulename = "log.dll";$/;"	v
+objects_list	./Makefile	/^objects_list = log.o logclient.o $/;"	m
+output_name	./Makefile	/^output_name = $(EXECS)$/;"	m
+readMyAddr	./logclient.c	/^__inline__ void* readMyAddr()$/;"	f
+set_log_options	./log.c	/^void set_log_options(int level, char *filename, int timestamp) $/;"	f
+show_msg	./log.c	/^void show_msg(char *modname, int level, const char *fmt, ...) $/;"	f
+src_prefix	./Makefile	/^src_prefix=$(HOME)\/mingw-cross-env-2.21\/usr\/i686-pc-mingw32$/;"	m
+suid	./log.c	/^static int suid = 0;$/;"	v	file:
+this_module	./logclient.c	/^HMODULE this_module = 0;$/;"	v
+view_method	./log.c	/^enum VIEW_METHOD view_method = vm_log_file;$/;"	v	typeref:enum:VIEW_METHOD
+view_method	./log.h	/^enum VIEW_METHOD view_method;$/;"	v	typeref:enum:VIEW_METHOD
+vm_debug_view	./log.h	/^	vm_debug_view$/;"	e	enum:VIEW_METHOD
+vm_log_file	./log.h	/^	vm_log_file,$/;"	e	enum:VIEW_METHOD
+vshow_msg	./log.c	/^void vshow_msg(char *modname, int level, const char *fmt, va_list ap)$/;"	f
+vshow_msg_dbgview	./log.c	/^void vshow_msg_dbgview(char *modname, int level, const char *fmt, va_list ap) $/;"	f
+vshow_msg_logfile	./log.c	/^void vshow_msg_logfile(char *modname, int level, const char *fmt, va_list ap) $/;"	f

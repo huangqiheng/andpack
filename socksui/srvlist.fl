@@ -1,0 +1,174 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0300 
+header_name {.h} 
+code_name {.cxx}
+class DownloadFile {open
+} {
+  decl {int need_to_terminate;} {public local
+  }
+  decl {char *fromurl;} {public local
+  }
+  decl {char *tofile;} {public local
+  }
+  Function {DownloadFile(Fl_Font uifont)} {open C
+  } {
+    Fl_Window mainWindow {
+      label Downloading open
+      protected xywh {1 25 350 60} type Single box PLASTIC_UP_BOX color 207 selection_color 47 align 5
+      code0 {mainWindow->labelfont(uifont);} modal noborder size_range {200 200 0 0} visible
+    } {
+      Fl_Tile TopNotic {
+        label {Download file from server.} open
+        protected xywh {0 7 25 20} align 8
+        code0 {TopNotic->labelfont(uifont);}
+      } {}
+      Fl_Progress downProgre {
+        label {0%}
+        protected xywh {25 25 250 25} box PLASTIC_UP_BOX
+        code0 {downProgre->maximum(100);}
+        code1 {downProgre->minimum(0);}
+        code2 {downProgre->value(0);}
+        code3 {downProgre->labelfont(uifont);}
+      }
+      Fl_Button confirmBtn {
+        label Abort
+        callback {need_to_terminate = 1;
+mainWindow->hide();}
+        protected xywh {275 25 50 25} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 94 selection_color 51
+        code0 {confirmBtn->labelfont(uifont);}
+      }
+    }
+    code {need_to_terminate = 0;} {}
+  }
+  Function {~DownloadFile()} {} {
+    code {delete confirmBtn;
+delete downProgre;
+delete TopNotic;
+delete mainWindow;} {}
+  }
+  Function {show_window(int trueOrFalse)} {open
+  } {
+    code {if (trueOrFalse)
+	mainWindow->show();
+else
+	mainWindow->hide();} {}
+  }
+  Function {set_progress(float value, char *labelText)} {} {
+    code {downProgre->value(value);
+if (labelText) {
+	downProgre->label(labelText);
+}} {}
+  }
+  Function {set_captions(const char *title, const char *notice, const char *button)} {} {
+    code {if (notice)
+	TopNotic->label(notice);
+
+if (button)
+	confirmBtn->label(button);
+
+if (title) {
+	mainWindow->label(title);
+}} {}
+  }
+  Function {set_position(int x, int y)} {open
+  } {
+    code {if ((x = -1) && (y= -1)) {
+	int X = (Fl::w() - mainWindow->w()) / 2;
+	int Y = (Fl::h() - mainWindow->h()) / 2;
+	mainWindow->position(X,Y);
+	return;
+}
+
+mainWindow->position(x, y);
+return;} {}
+  }
+} 
+
+class SelectServer {} {
+  decl {void *thread_cond} {public local
+  }
+  decl {int need_to_exit;} {public local
+  }
+  decl {int argc;} {public local
+  }
+  decl {char **argv} {public local
+  }
+  Function {SelectServer(Fl_Font uifont)} {open C
+  } {
+    Fl_Window mainWindow {
+      label {Server List} open
+      protected xywh {415 581 295 290} type Single box PLASTIC_UP_BOX color 207 align 5 hotspot
+      code0 {mainWindow->labelfont(uifont);} size_range {200 200 0 0} visible
+    } {
+      Fl_Tile SelectedItem {
+        label {Selected item.} open
+        protected xywh {0 215 25 25} align 8
+        code0 {SelectedItem->labelfont(uifont);}
+      } {}
+      Fl_Tile TopNotic {
+        label {Please select a socks server:} open
+        protected xywh {0 5 25 30} align 8
+        code0 {TopNotic->labelfont(uifont);}
+      } {}
+      Fl_Browser ServerBrowser {user_data_type {void*}
+        xywh {25 30 245 185} type Hold box PLASTIC_THIN_DOWN_BOX color 207
+        code0 {ServerBrowser->labelfont(uifont);}
+      }
+      Fl_Return_Button confirmBtn {
+        label Confirm
+        callback {mainWindow->hide();}
+        protected xywh {150 240 120 40} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 127 selection_color 127 labeltype EMBOSSED_LABEL hotspot
+        code0 {confirmBtn->labelfont(uifont);}
+      }
+      Fl_Button skipBtn {
+        label SkipSocks
+        callback {int selectid = -2;
+SelectedItem->user_data((void*)selectid);
+mainWindow->hide();}
+        xywh {25 240 120 40} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 127 selection_color 127 labeltype EMBOSSED_LABEL
+        code0 {skipBtn->labelfont(uifont);}
+      }
+    }
+  }
+  Function {~SelectServer()} {} {
+    code {delete skipBtn;
+delete confirmBtn;
+delete ServerBrowser;
+delete TopNotic;
+delete SelectedItem;
+delete mainWindow;} {}
+  }
+  Function {show_window()} {} {
+    code {mainWindow->show();} {}
+  }
+  Function {set_captions(const char *notice,const char *skip,const char *confirm,const char *selectText, int selectid)} {open
+  } {
+    code {if (notice)
+	TopNotic->label(notice);
+
+if (skip)
+	skipBtn->label(skip);
+
+if (confirm)
+	confirmBtn->label(confirm);
+
+if (selectText) {
+	SelectedItem->label(selectText);
+	SelectedItem->user_data((void*)selectid);
+}} {}
+  }
+  Function {set_position(int x, int y)} {} {
+    code {if ((x = -1) && (y= -1)) {
+	int X = (Fl::w() - mainWindow->w()) / 2;
+	int Y = (Fl::h() - mainWindow->h()) / 2;
+	mainWindow->position(X,Y);
+	return;
+}
+
+mainWindow->position(x, y);} {}
+  }
+  Function {get_select_result()} {open return_type int
+  } {
+    code {return (int)SelectedItem->user_data();} {}
+  }
+} 

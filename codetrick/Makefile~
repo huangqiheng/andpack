@@ -1,0 +1,38 @@
+#项目信息
+
+objects_list = CodeTrick.o
+EXECS = CodeTrick.dll
+LIBOUT = ../bin
+
+##编译器选项
+
+CC = i586-mingw32msvc-gcc
+LD = i586-mingw32msvc-gcc
+CFLAGS = -I/usr/i586-mingw32msvc/include
+LDFLAGS = -L/usr/i586-mingw32msvc/lib
+LIBS = -shared
+
+MAKE = make --no-print-directory
+SHELL = /bin/sh
+
+### 具体的编译链接指令 ###
+
+output_name = $(EXECS)
+
+default: $(output_name) dbgstr
+
+$(output_name): $(objects_list)
+	$(LD) $(LDFLAGS) -o $(output_name) $(objects_list) $(LIBS)
+	cp $(output_name) $(LIBOUT)/$(EXECS)
+
+dbgstr: dbgstr.o
+	$(LD) $(LDFLAGS) -o dbgstr.exe dbgstr.o
+	cp dbgstr.exe $(LIBOUT)/dbgstr.exe	
+
+clean:
+	rm -f *.o $(output_name)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+.SUFFIXES: .c

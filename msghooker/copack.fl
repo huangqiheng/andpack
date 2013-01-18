@@ -1,0 +1,91 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0300 
+header_name {.h} 
+code_name {.cxx}
+decl {\#include <FL/Fl_File_Chooser.H>} {public global
+} 
+
+decl {\#include <FL/Fl_Hold_Browser.H>} {public global
+} 
+
+class Packer {open
+} {
+  Function {Packer()} {open
+  } {
+    Fl_Window main_window {
+      label {插件打包器} open
+      xywh {21 70 1180 840} type Single box PLASTIC_THIN_DOWN_BOX color 55 align 4 visible
+    } {
+      Fl_Group {} {
+        label {配置打包选项} open
+        xywh {55 50 415 755} box PLASTIC_DOWN_BOX color 7 labeltype EMBOSSED_LABEL labelsize 18 align 5
+      } {
+        Fl_Input_Choice root_path {
+          label {选择被打包程序的根目录：} open
+          xywh {70 80 380 30} box GTK_DOWN_BOX down_box DOWN_BOX color 7 align 5
+        } {}
+        Fl_Button select_path {
+          label {选择根目录}
+          xywh {305 110 145 30} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 7
+        }
+        Fl_Check_Browser entry_apps {
+          label {选择作为入口的需动态打包的程序：}
+          xywh {70 215 380 215} box PLASTIC_THIN_DOWN_BOX align 5
+        }
+        Fl_Check_Browser plugin_apps {
+          label {选择需要注入插件功能的程序：}
+          xywh {70 465 380 300} box PLASTIC_THIN_DOWN_BOX align 5
+        }
+        Fl_Choice launch_choice {
+          label {生成以下程序的启动器：} open
+          xywh {70 155 380 30} box GTK_DOWN_BOX down_box PLASTIC_THIN_DOWN_BOX align 5
+        } {}
+        Fl_Input add_pluginapp_text {
+          xywh {70 765 280 30} box GTK_DOWN_BOX
+        }
+        Fl_Button add_pluginapp_button {
+          label {添加程序}
+          xywh {350 765 100 30} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 7
+        }
+      }
+      Fl_Group {} {
+        label {配置插件参数} open
+        xywh {490 50 635 695} box PLASTIC_DOWN_BOX color 55 labeltype EMBOSSED_LABEL labelsize 18 align 5
+      } {
+        Fl_Text_Editor param_editor {
+          xywh {720 50 405 695} box PLASTIC_DOWN_FRAME
+        }
+        Fl_Browser plugin_list {
+          image {../doc/Check-icon.png} deimage {../doc/Delete-icon.png} xywh {490 50 230 695} type Hold align 290 when 0
+          class Fl_Hold_Browser
+        }
+      }
+      Fl_Button {} {
+        label {关闭}
+        callback {main_window->hide();}
+        xywh {490 745 230 60} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 7 selection_color 47 labeltype EMBOSSED_LABEL labelsize 24
+      }
+      Fl_Return_Button ok_button {
+        label {生成捆绑程序}
+        xywh {720 745 295 60} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 7 selection_color 47 labeltype EMBOSSED_LABEL labelsize 24
+      }
+      Fl_Check_Button is_cover_src {
+        label {替换来源程序}
+        xywh {1020 745 105 20} down_box DOWN_BOX
+      }
+      Fl_Check_Button is_backup_src {
+        label {备份来源程序}
+        xywh {1020 765 105 20} down_box DOWN_BOX
+      }
+      Fl_Check_Button is_retore_last {
+        label {记录上次配置}
+        xywh {1020 785 105 20} down_box DOWN_BOX
+      }
+    }
+    code {main_window->show();} {}
+  }
+  Function {~Packer()} {open
+  } {
+    code {delete main_window;} {}
+  }
+} 

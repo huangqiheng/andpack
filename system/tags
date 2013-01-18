@@ -1,0 +1,227 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADDR_TABLE	sync_funcs.c	/^} __attribute__ ((packed, aligned(1))) ADDR_TABLE;$/;"	t	typeref:struct:__anon2	file:
+DAEMON_EXE_NAME	system_def.h	56;"	d
+DbgPrint	sync_funcs.c	/^static char* DbgPrint(const char* format, ...)$/;"	f	file:
+EVENT_PREFIX	sync_funcs.c	/^const char* EVENT_PREFIX = "msg_event_of";$/;"	v
+MSG_BLOCK	sync_funcs.c	/^} MSG_BLOCK;$/;"	t	typeref:struct:__MSG_BLOCK	file:
+MSG_ITEM	sync_funcs.c	/^} __attribute__ ((packed, aligned(1))) MSG_ITEM;$/;"	t	typeref:struct:__msg_item	file:
+MUTEX_PREFIX	sync_funcs.c	/^const char* MUTEX_PREFIX = "msg_mutex_of";$/;"	v
+NAME_ITEM	sync_funcs.c	/^} __attribute__ ((packed, aligned(1))) NAME_ITEM;$/;"	t	typeref:struct:__anon1	file:
+ORIGIN_APP_SECTION_NAME	system_def.h	60;"	d
+PACKAGE	system_def.h	/^} __attribute__ ((packed, aligned(1))) PACKAGE;$/;"	t	typeref:struct:_PACKAGE
+PACKAGE	system_def.h	52;"	d
+PACKAGE_SECTION_NAME	system_def.h	58;"	d
+PLUGIN_PARAM_SECTION	system_def.h	63;"	d
+QUEUE_BLOCK	sync_funcs.c	/^} QUEUE_BLOCK;$/;"	t	typeref:struct:__anon3	file:
+QUEUE_ITEM	sync_funcs.c	/^} QUEUE_ITEM;$/;"	t	typeref:struct:__queue_item	file:
+RESOURCE_SECTION_NAME	system_def.h	62;"	d
+RVATOVA	sync_funcs.c	6;"	d	file:
+SESSION_DLL_NAME	system_def.h	55;"	d
+SHARED_SECTION_NAME	system_def.h	61;"	d
+STARTUP	system_def.h	/^} __attribute__ ((packed, aligned(1))) STARTUP;$/;"	t	typeref:struct:_STARTUP
+STARTUP	system_def.h	53;"	d
+STORE_ITEM	system_def.h	/^} __attribute__ ((packed, aligned(1))) STORE_ITEM;$/;"	t	typeref:struct:_STORE_ITEM
+STUB_START_SECTION_NAME	system_def.h	59;"	d
+_PACKAGE	system_def.h	/^typedef struct _PACKAGE$/;"	s
+_STARTUP	system_def.h	/^typedef struct _STARTUP$/;"	s
+_STORE_ITEM	system_def.h	/^typedef struct _STORE_ITEM$/;"	s
+__MSG_BLOCK	sync_funcs.c	/^typedef struct __MSG_BLOCK$/;"	s	file:
+__addrid	sync_funcs.c	/^void* __addrid(const char* addr_id)$/;"	f
+__addrid_group	sync_funcs.c	/^void* __addrid_group(const char* item_id_group, const char* item_id)$/;"	f
+__addrid_group_set	sync_funcs.c	/^void* __addrid_group_set(const char* item_id_group, const char* item_id, void* addr)$/;"	f
+__addrid_set	sync_funcs.c	/^void* __addrid_set(const char* addr_id, void* addr)$/;"	f
+__client_block	sync_funcs.c	/^typedef struct __client_block$/;"	s	file:
+__cs_item	sync_funcs.c	/^typedef struct __cs_item$/;"	s	file:
+__enter_mutex	sync_funcs.c	/^HANDLE __enter_mutex(const char* mutex_id)$/;"	f
+__idmap_item	sync_funcs.c	/^typedef struct __idmap_item$/;"	s	file:
+__leave_mutex	sync_funcs.c	/^void __leave_mutex(HANDLE mutex)$/;"	f
+__msg_item	sync_funcs.c	/^typedef struct __msg_item$/;"	s	file:
+__queue_item	sync_funcs.c	/^typedef struct __queue_item$/;"	s	file:
+__section_funcs_h_once__	session_funcs.h	2;"	d
+__sign_end	sync_funcs.c	/^typedef struct __sign_end$/;"	s	file:
+__sync_funcs_h_once__	sync_funcs.h	2;"	d
+__system_def_h_once__	system_def.h	2;"	d
+_cls_hook	session_funcs.c	/^lpfn_cls_hook _cls_hook;$/;"	v
+_get_package	session_funcs.c	/^lpfn_get_package _get_package;$/;"	v
+_get_parameter	session_funcs.c	/^lpfn_get_parameter  _get_parameter;$/;"	v
+_get_parameters	session_funcs.c	/^lpfn_get_parameters _get_parameters;$/;"	v
+_get_session_sharekey	session_funcs.c	/^lpfn_get_session_sharekey _get_session_sharekey;$/;"	v
+_get_startup	session_funcs.c	/^lpfn_get_startup _get_startup;$/;"	v
+_set_hook	session_funcs.c	/^lpfn_set_hook _set_hook;$/;"	v
+_set_session_sharekey	session_funcs.c	/^lpfn_set_session_sharekey _set_session_sharekey;$/;"	v
+addr	sync_funcs.c	/^	void* addr;$/;"	m	struct:__anon1	file:
+addr_table_bk	sync_funcs.c	/^ADDR_TABLE* addr_table_bk = NULL;$/;"	v
+addrid	sync_funcs.c	/^void* addrid(const char* addr_id)$/;"	f
+addrid_group	sync_funcs.c	/^void* addrid_group(const char* item_id_group, const char* item_id)$/;"	f
+addrid_group_init	sync_funcs.c	/^void* addrid_group_init(const char* item_id_group, const char* item_id, lpfn_addrid_cb initer, size_t init_size)$/;"	f
+addrid_group_set	sync_funcs.c	/^void* addrid_group_set(const char* item_id_group, const char* item_id, void* addr)$/;"	f
+addrid_init	sync_funcs.c	/^void* addrid_init(const char* addr_id, lpfn_addrid_cb initer, size_t init_size)$/;"	f
+addrid_mutex	sync_funcs.c	/^char* addrid_mutex()$/;"	f
+addrid_mutex_format	sync_funcs.c	/^const char* addrid_mutex_format = "Local\\\\addrid-mutex(%d)";$/;"	v
+addrid_mutex_id	sync_funcs.c	/^char* addrid_mutex_id = NULL;$/;"	v
+addrid_set	sync_funcs.c	/^void* addrid_set(const char* addr_id, void* addr)$/;"	f
+alloc_size	system_def.h	/^	unsigned long alloc_size;$/;"	m	struct:_PACKAGE
+begin	sync_funcs.c	/^	int begin;$/;"	m	struct:__MSG_BLOCK	file:
+buffer	sync_funcs.c	/^	char buffer[0];$/;"	m	struct:__MSG_BLOCK	file:
+buffer	sync_funcs.c	/^	char buffer[0];$/;"	m	struct:__msg_item	file:
+buffer	sync_funcs.c	/^	char buffer[1];$/;"	m	struct:__queue_item	file:
+buffer	sync_funcs.c	/^	char buffer[MAX_PATH];$/;"	m	struct:__anon1	file:
+buffer	sync_funcs.c	/^	char buffer[MAX_PATH];$/;"	m	struct:__anon2	file:
+buffer	system_def.h	/^	char buffer[0];$/;"	m	struct:_PACKAGE
+buffer	system_def.h	/^	char buffer[0];$/;"	m	struct:_STARTUP
+client_block	sync_funcs.c	/^} client_block;$/;"	t	typeref:struct:__client_block	file:
+client_file_map	sync_funcs.c	/^	HANDLE client_file_map;$/;"	m	struct:__client_block	file:
+client_map_base	sync_funcs.c	/^	void* client_map_base;$/;"	m	struct:__client_block	file:
+client_map_size	sync_funcs.c	/^	size_t client_map_size;$/;"	m	struct:__client_block	file:
+client_name	sync_funcs.c	/^	char* client_name;$/;"	m	struct:__client_block	file:
+client_ori_size	sync_funcs.c	/^	size_t client_ori_size;$/;"	m	struct:__client_block	file:
+cls_hook	session_funcs.c	/^int __stdcall cls_hook()$/;"	f
+count	sync_funcs.c	/^	int count;$/;"	m	struct:__anon2	file:
+create_readwrite_maping	sync_funcs.c	/^HANDLE create_readwrite_maping(const char* full_name, size_t map_size)$/;"	f
+cs	sync_funcs.c	/^	CRITICAL_SECTION cs;$/;"	m	struct:__cs_item	file:
+cs_atom_list	sync_funcs.c	/^const char* cs_atom_list = "cs_atom_list";$/;"	v
+cs_id	sync_funcs.c	/^	char* cs_id;$/;"	m	struct:__cs_item	file:
+cs_item	sync_funcs.c	/^} cs_item;$/;"	t	typeref:struct:__cs_item	file:
+daemon_dbg_name	system_def.h	/^	STORE_ITEM daemon_dbg_name;	\/\/daemon.exe的消息名$/;"	m	struct:_STARTUP
+daemon_exe	system_def.h	/^	STORE_ITEM daemon_exe;$/;"	m	struct:_PACKAGE
+daemon_process	system_def.h	/^	STORE_ITEM daemon_process;	\/\/守护进程$/;"	m	struct:_STARTUP
+data_size	sync_funcs.c	/^	int data_size;$/;"	m	struct:__msg_item	file:
+debug_print	sync_funcs.h	8;"	d
+default_addrid_size	sync_funcs.c	316;"	d	file:
+dequeue	sync_funcs.c	/^void* dequeue(const char* queue_id, int* size, DWORD time_out)$/;"	f
+dequeue_cs	sync_funcs.c	/^	char* dequeue_cs;$/;"	m	struct:__anon3	file:
+do_dequeue	sync_funcs.c	/^QUEUE_ITEM* do_dequeue(QUEUE_BLOCK* que_block)$/;"	f
+end	sync_funcs.c	/^	int end;$/;"	m	struct:__MSG_BLOCK	file:
+enqueue	sync_funcs.c	/^long  enqueue(const char* queue_id, const void* data, int size)$/;"	f
+enqueue_cs	sync_funcs.c	/^	char* enqueue_cs;$/;"	m	struct:__anon3	file:
+enqueue_event	sync_funcs.c	/^	HANDLE enqueue_event;$/;"	m	struct:__anon3	file:
+enter_cs	sync_funcs.c	/^void enter_cs(const char* cs_id)$/;"	f
+enter_mutex	sync_funcs.c	/^void enter_mutex(const char* mutex_id)$/;"	f
+file_map_handle	sync_funcs.c	/^	HANDLE file_map_handle;$/;"	m	struct:__sign_end	file:
+file_map_name	sync_funcs.c	/^	char file_map_name[MAX_PATH];$/;"	m	struct:__sign_end	file:
+find_addrid	sync_funcs.c	/^void** find_addrid(ADDR_TABLE* addr_table, const char* addr_id)$/;"	f
+find_cs_item	sync_funcs.c	/^cs_item* find_cs_item(cs_item* root_cs, const char* cs_id)$/;"	f
+find_idmap_item	sync_funcs.c	/^idmap_item* find_idmap_item(idmap_item* root_item, const char* item_id)$/;"	f
+find_sign_end	sync_funcs.c	/^sign_end* find_sign_end(void* address)$/;"	f
+free_client_block	sync_funcs.c	/^void free_client_block(const char* full_name)$/;"	f
+free_local	sync_funcs.c	/^void  free_local(const char* mem_id)$/;"	f
+get_addr_table	sync_funcs.c	/^ADDR_TABLE* get_addr_table()$/;"	f
+get_client_block	sync_funcs.c	/^client_block* get_client_block(const char* full_name)$/;"	f
+get_package	session_funcs.c	/^PACKAGE* __stdcall get_package()$/;"	f
+get_param_valint	session_funcs.c	/^long get_param_valint(const char* key, long default_val)$/;"	f
+get_param_valstr	session_funcs.c	/^const char* get_param_valstr(const char* key, char* default_val)$/;"	f
+get_parameter	session_funcs.c	/^const char** __stdcall get_parameter(HINSTANCE image, const char* catelog_name, const char* key_name)$/;"	f
+get_parameters	session_funcs.c	/^const char** __stdcall get_parameters(HINSTANCE image, const char* catelog_name)$/;"	f
+get_pe_handle	session_funcs.c	/^static HANDLE get_pe_handle()$/;"	f	file:
+get_root_idmap	sync_funcs.c	/^idmap_item* get_root_idmap(const char* idmap_type)$/;"	f
+get_session_sharekey	session_funcs.c	/^const char* __stdcall get_session_sharekey(const char* type, const char* key)$/;"	f
+get_share_valint	session_funcs.c	/^long get_share_valint(const char* type, const char* key, long default_val)$/;"	f
+get_startup	session_funcs.c	/^STARTUP* __stdcall get_startup()$/;"	f
+get_sysparam_valint	session_funcs.c	/^long get_sysparam_valint(const char* key, long default_val)$/;"	f
+get_sysparam_valstr	session_funcs.c	/^const char* get_sysparam_valstr(const char* key, char* default_val)$/;"	f
+get_tls	sync_funcs.c	/^void* get_tls(const char* tls_id)$/;"	f
+head	sync_funcs.c	/^	QUEUE_ITEM head;$/;"	m	struct:__anon3	file:
+head	sync_funcs.c	/^	int head;$/;"	m	struct:__MSG_BLOCK	file:
+idmap_item	sync_funcs.c	/^} idmap_item;$/;"	t	typeref:struct:__idmap_item	file:
+index	system_def.h	/^	unsigned long index;$/;"	m	struct:_STORE_ITEM
+init_system_functions	session_funcs.c	/^int init_system_functions()$/;"	f
+item_count	sync_funcs.c	/^	long item_count;$/;"	m	struct:__MSG_BLOCK	file:
+item_id	sync_funcs.c	/^	char* item_id;$/;"	m	struct:__idmap_item	file:
+item_value	sync_funcs.c	/^	void* item_value;$/;"	m	struct:__idmap_item	file:
+launch_exe	system_def.h	/^	STORE_ITEM launch_exe;$/;"	m	struct:_PACKAGE
+leave_cs	sync_funcs.c	/^void leave_cs(const char* cs_id)$/;"	f
+leave_mutex	sync_funcs.c	/^void leave_mutex(const char* mutex_id)$/;"	f
+length	system_def.h	/^	unsigned long length;$/;"	m	struct:_STORE_ITEM
+lpfn_addrid_cb	sync_funcs.h	/^typedef void (*lpfn_addrid_cb)(void* data, const char* item_id);$/;"	t
+lpfn_cls_hook	session_funcs.c	/^typedef int (__stdcall *lpfn_cls_hook)();$/;"	t	file:
+lpfn_get_package	session_funcs.c	/^typedef PACKAGE* (__stdcall *lpfn_get_package)();$/;"	t	file:
+lpfn_get_parameter	session_funcs.c	/^typedef const char** (__stdcall *lpfn_get_parameter)(HINSTANCE image, const char* catelog_name, const char* key_name);$/;"	t	file:
+lpfn_get_parameters	session_funcs.c	/^typedef const char** (__stdcall *lpfn_get_parameters)(HINSTANCE image, const char* catelog_name);$/;"	t	file:
+lpfn_get_session_sharekey	session_funcs.c	/^typedef const char* (__stdcall *lpfn_get_session_sharekey)(const char* type, const char* key);$/;"	t	file:
+lpfn_get_startup	session_funcs.c	/^typedef STARTUP* (__stdcall *lpfn_get_startup)();$/;"	t	file:
+lpfn_set_hook	session_funcs.c	/^typedef int (__stdcall *lpfn_set_hook)();$/;"	t	file:
+lpfn_set_session_sharekey	session_funcs.c	/^typedef int (__stdcall *lpfn_set_session_sharekey)(const char* type, const char* key, const char* value);$/;"	t	file:
+make_event	sync_funcs.c	/^HANDLE make_event(const char* name)$/;"	f
+malloc_local	sync_funcs.c	/^void* malloc_local(const char* mem_id, size_t size)$/;"	f
+map_base	sync_funcs.c	/^	void* map_base;$/;"	m	struct:__sign_end	file:
+map_file_names	system_def.h	/^	STORE_ITEM map_file_names;    	\/\/映射别名，格式是：“别名:真名”$/;"	m	struct:_STARTUP
+map_local_prefix	sync_funcs.c	470;"	d	file:
+map_size	sync_funcs.c	/^	size_t map_size;$/;"	m	struct:__sign_end	file:
+max_index	system_def.h	/^	unsigned long max_index;$/;"	m	struct:_PACKAGE
+max_index	system_def.h	/^	unsigned long max_index;$/;"	m	struct:_STARTUP
+msg_client	sync_funcs.c	/^long  msg_client(const char* msg_id, const void* data, int size)$/;"	f
+msg_server	sync_funcs.c	/^void* msg_server(const char* msg_id, int* size, DWORD time_out)$/;"	f
+mutex_atom_list	sync_funcs.c	/^const char* mutex_atom_list = "mutex_atom_list";$/;"	v
+named_memory_alloc	sync_funcs.c	/^void* named_memory_alloc(const char* full_name, size_t size)$/;"	f
+named_memory_free	sync_funcs.c	/^void named_memory_free(const char* full_name)$/;"	f
+named_memory_open	sync_funcs.c	/^void* named_memory_open(const char* full_name, size_t *size)$/;"	f
+next	sync_funcs.c	/^	struct __client_block* next;$/;"	m	struct:__client_block	typeref:struct:__client_block::__client_block	file:
+next	sync_funcs.c	/^	struct __cs_item* next;$/;"	m	struct:__cs_item	typeref:struct:__cs_item::__cs_item	file:
+next	sync_funcs.c	/^	struct __idmap_item* next;$/;"	m	struct:__idmap_item	typeref:struct:__idmap_item::__idmap_item	file:
+next	sync_funcs.c	/^	struct __queue_item* next;$/;"	m	struct:__queue_item	typeref:struct:__queue_item::__queue_item	file:
+null	sync_funcs.c	/^	char null[MAX_PATH];$/;"	m	struct:__sign_end	file:
+offset_event_name	sync_funcs.c	/^	int offset_event_name;$/;"	m	struct:__MSG_BLOCK	file:
+offset_mutex_name	sync_funcs.c	/^	int offset_mutex_name;$/;"	m	struct:__MSG_BLOCK	file:
+open_local	sync_funcs.c	/^void* open_local(const char* mem_id)$/;"	f
+ori_size	sync_funcs.c	/^	size_t ori_size;$/;"	m	struct:__sign_end	file:
+owner_pid	sync_funcs.c	/^	DWORD owner_pid;$/;"	m	struct:__MSG_BLOCK	file:
+owner_pid	sync_funcs.c	/^	DWORD owner_pid;$/;"	m	struct:__sign_end	file:
+packer_dll	system_def.h	/^	STORE_ITEM packer_dll;$/;"	m	struct:_PACKAGE
+plugin_app_dir	system_def.h	/^	STORE_ITEM plugin_app_dir;$/;"	m	struct:_PACKAGE
+plugin_dll_dir	system_def.h	/^	STORE_ITEM plugin_dll_dir;$/;"	m	struct:_PACKAGE
+prev	sync_funcs.c	/^	struct __queue_item* prev;$/;"	m	struct:__queue_item	typeref:struct:__queue_item::__queue_item	file:
+que_block_init	sync_funcs.c	/^void que_block_init(void* data, const char* item_id)$/;"	f
+queue_count	sync_funcs.c	/^	int queue_count;$/;"	m	struct:__anon3	file:
+queue_group_list	sync_funcs.c	/^const char*  queue_group_list = "queue_group_list";$/;"	v
+queue_heap	sync_funcs.c	/^	HANDLE queue_heap;$/;"	m	struct:__anon3	file:
+readMyAddr	session_funcs.c	/^static __inline__ void* readMyAddr()$/;"	f	file:
+realy_plugin_apps	system_def.h	/^	STORE_ITEM realy_plugin_apps; 	\/\/同上，需要插入插件的进程$/;"	m	struct:_STARTUP
+realy_repack_apps	system_def.h	/^	STORE_ITEM realy_repack_apps; 	\/\/通过实地扫描所得的实际的需要打包的文件$/;"	m	struct:_STARTUP
+repack_app_dir	system_def.h	/^	STORE_ITEM repack_app_dir;$/;"	m	struct:_PACKAGE
+repack_whoami_index	system_def.h	/^	long repack_whoami_index; \/\/打包时做的标记，说明此节段所在exe的原来名字$/;"	m	struct:_PACKAGE
+root_client_block	sync_funcs.c	/^client_block root_client_block = {NULL};$/;"	v
+root_cs_init	sync_funcs.c	/^void root_cs_init(void* data, const char* addr_id)$/;"	f
+root_path	system_def.h	/^	STORE_ITEM root_path; 	      	\/\/根目录$/;"	m	struct:_STARTUP
+round_align	sync_funcs.c	/^static long round_align(long val, long alignment)$/;"	f	file:
+server_event	sync_funcs.c	/^	HANDLE server_event;$/;"	m	struct:__MSG_BLOCK	file:
+server_file_map	sync_funcs.c	/^	HANDLE server_file_map;$/;"	m	struct:__client_block	file:
+server_map_base	sync_funcs.c	/^	void* server_map_base;$/;"	m	struct:__client_block	file:
+server_map_size	sync_funcs.c	/^	size_t server_map_size;$/;"	m	struct:__client_block	file:
+server_ori_size	sync_funcs.c	/^	size_t server_ori_size;$/;"	m	struct:__client_block	file:
+session_dll	session_funcs.c	/^HMODULE session_dll;$/;"	v
+session_dll	system_def.h	/^	STORE_ITEM session_dll;		\/\/守护dll，记录方便删除$/;"	m	struct:_STARTUP
+session_dll	system_def.h	/^	STORE_ITEM session_dll;$/;"	m	struct:_PACKAGE
+set_hook	session_funcs.c	/^int __stdcall set_hook()$/;"	f
+set_session_sharekey	session_funcs.c	/^int __stdcall set_session_sharekey(const char* type, const char* key, const char* value)$/;"	f
+set_share_valint	session_funcs.c	/^long set_share_valint(const char* type, const char* key, long value)$/;"	f
+set_tls	sync_funcs.c	/^int set_tls(const char* tls_id, void* value)$/;"	f
+share_mutex_name	system_def.h	/^	STORE_ITEM share_mutex_name;	\/\/session范围内的共享数据互斥对象$/;"	m	struct:_STARTUP
+sign_a	sync_funcs.c	/^	DWORD sign_a;$/;"	m	struct:__sign_end	file:
+sign_b	sync_funcs.c	/^	DWORD sign_b;$/;"	m	struct:__sign_end	file:
+sign_end	sync_funcs.c	/^} sign_end;$/;"	t	typeref:struct:__sign_end	file:
+sign_string	sync_funcs.c	35;"	d	file:
+size	sync_funcs.c	/^	int size;$/;"	m	struct:__msg_item	file:
+size	sync_funcs.c	/^	short size;$/;"	m	struct:__anon1	file:
+size	sync_funcs.c	/^	size_t size;$/;"	m	struct:__MSG_BLOCK	file:
+size	sync_funcs.c	/^	size_t size;$/;"	m	struct:__anon2	file:
+size	sync_funcs.c	/^	size_t size;$/;"	m	struct:__queue_item	file:
+size	system_def.h	/^	unsigned long size;$/;"	m	struct:_PACKAGE
+size	system_def.h	/^	unsigned long size;$/;"	m	struct:_STARTUP
+stub_command_line	system_def.h	/^	STORE_ITEM stub_command_line; 	\/\/打包器被执行时的命令行$/;"	m	struct:_STARTUP
+stub_exe	system_def.h	/^	STORE_ITEM stub_exe;$/;"	m	struct:_PACKAGE
+stub_is_launch	system_def.h	/^	unsigned long stub_is_launch; 	\/\/打包器是否是launch$/;"	m	struct:_STARTUP
+stub_parent_process	system_def.h	/^	STORE_ITEM stub_parent_process; \/\/打包器被执行时的父进程$/;"	m	struct:_STARTUP
+stub_parent_process_id	system_def.h	/^	unsigned long stub_parent_process_id; \/\/打包器被执行时的父进程ID$/;"	m	struct:_STARTUP
+stub_process_id	system_def.h	/^	unsigned long stub_process_id; 	\/\/生成startup的stub进程id，方便检测其退出$/;"	m	struct:_STARTUP
+stub_process_name	system_def.h	/^	STORE_ITEM stub_process_name; 	\/\/被执行的打包器的文件名$/;"	m	struct:_STARTUP
+tail	sync_funcs.c	/^	QUEUE_ITEM tail;$/;"	m	struct:__anon3	file:
+tail	sync_funcs.c	/^	int tail;$/;"	m	struct:__MSG_BLOCK	file:
+this_module	session_funcs.c	/^static HMODULE this_module = 0;$/;"	v	file:
+tls_atom_list	sync_funcs.c	/^const char* tls_atom_list = "tls_atom_list";$/;"	v
+used_size	sync_funcs.c	/^	size_t used_size;$/;"	m	struct:__anon2	file:
+xml_plugin_param	session_funcs.c	6;"	d	file:
